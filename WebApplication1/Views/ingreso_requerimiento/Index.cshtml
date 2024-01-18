@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebApplication1.DataAccess.VistaIngresoRequerimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Ingreso Requerimiento</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoRequerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prioridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aplicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hardware)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_Plazo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoRequerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prioridad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Requerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aplicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hardware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_ingreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_Plazo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ingreso_requerimiento }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_ingreso_requerimiento }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ingreso_requerimiento })
+        </td>
+    </tr>
+}
+
+</table>

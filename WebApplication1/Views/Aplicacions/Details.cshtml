@@ -1,0 +1,27 @@
+﻿@model WebApplication1.DataAccess.Aplicacion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aplicacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoAplicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoAplicacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Aplicacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

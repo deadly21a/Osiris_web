@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebApplication1.DataAccess.Aplicacion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento De Aplicaciones</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoAplicacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoAplicacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Aplicacion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Aplicacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Aplicacion })
+        </td>
+    </tr>
+}
+
+</table>

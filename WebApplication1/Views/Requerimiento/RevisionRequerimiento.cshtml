@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "RevisionRequerimiento";
+}
+
+<div class="container">
+    <div class="header">
+        <h2>Revision de Requerimiento</h2>
+    </div>
+    <!-- Buscador por ID en la sección General -->
+    <div class="form-group">
+        <label for="idBusqueda">Buscar por ID</label>
+        <input type="text" id="idBusqueda" class="form-control">
+        <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+    </div>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">General</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="form-group">
+                            <label for="fechaIngreso">Fecha de Ingreso</label>
+                            <input type="datetime-local" id="fechaIngreso" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" id="id" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputStatus">Estado</label>
+                            <input type="text" id="inputStatus" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="solicitante">Solicitante</label>
+                            <input type="text" id="Solicitante" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoRequerimiento">Tipo de Requerimiento</label>
+                            <input type="text" id="tipoRequerimiento" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="prioridad">Prioridad</label>
+                            <input type="text" id="prioridad" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="requerimiento">Requerimiento</label>
+                            <input type="text" id="requerimiento" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="proyecto">Proyecto</label>
+                            <input type="text" id="proyecto" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAplicacion">Aplicación</label>
+                            <input type="text" id="aplicacion" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputOpcion">Opción</label>
+                            <input type="text" id="inputOpcion" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputHardware">Hardware</label>
+                            <input type="text" id="inputHardware" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputComentario">Comentario</label>
+                            <input type="text" id="inputComentario" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFPlazo">F.Plazo</label>
+                            <input type="datetime-local" id="inputFPlazo" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Budget</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Campos específicos de Budget -->
+                        <div class="form-group">
+                            <label for="comentarioRev">Comentario_Rev.</label>
+                            <textarea id="comentarioRev" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracion">Duración (Hr)</label>
+                            <input type="text" id="duracion" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ejecutor">Ejecutor</label>
+                            <select id="ejecutor" class="form-control">
+                                <option selected="" disabled="">Select one</option>
+                                <option>Cesar Guerra</option>
+                                <option>Danny Vasquez</option>
+                                <option>David Albarracin</option>
+                                <option>Jorge Medina</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="/Scripts/Revision.js"></script>

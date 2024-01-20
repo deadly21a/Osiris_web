@@ -2,14 +2,33 @@
 
 //    var data = ingreso_requerimiento();
 
-    
+
 //    $.each(data.DdetAplicacion, function (index, item) {
 //        var option = new Option(item.text, item.id);
 //        $('#ID_Aplicacion').append(option);
 //    });
 //    $('#ID_Aplicacion').val(data.detAplicacion[0].text);
 //    $('#TipoAplicacion').val(data.detAplicacion[0].id);
-//});
+    //});
+
+    $(document).ready(function () {
+        var data = ingreso_requerimiento();
+        $('Aplicacion').select2({
+            ajax: {
+                url: '/Requerimiento/ObtenerDatosAplicacion',
+                dataType: 'json',
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (Aplicacion) {
+                            return {
+                                id: ID_Aplicacion, text: TipoAplicacion
+                            };
+                        })
+                    };
+                }
+            }
+        });
+    });
     
 IdAplicacion
 
@@ -327,4 +346,3 @@ $("#BtnEnviarDatos").on("click", function () {
     }).fail(function (result) {
         alert('Error en la solicitud: ' + result);
     });
-});

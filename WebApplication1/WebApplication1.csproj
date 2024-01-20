@@ -174,12 +174,10 @@
     <Compile Include="Controllers\AplicacionsController.cs" />
     <Compile Include="Controllers\HardwaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ingreso_requerimientoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RequerimientoController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SolicitantesController.cs" />
-    <Compile Include="Controllers\VistaIngresoRequerimientoesController.cs" />
     <Compile Include="DataAccess\Aplicacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2204,6 +2202,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\osirisl.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2350,6 +2349,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Edit_Ingreso.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2413,17 +2413,12 @@
     <Content Include="Views\Aplicacions\Details.cshtml" />
     <Content Include="Views\Aplicacions\Edit.cshtml" />
     <Content Include="Views\Aplicacions\Index.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\Create.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\Delete.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\Details.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\Edit.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\Index.cshtml" />
-    <Content Include="Views\ingreso_requerimiento\VistaIngresoRequerimiento.cshtml" />
-    <Content Include="Views\VistaIngresoRequerimientoes\Create.cshtml" />
-    <Content Include="Views\VistaIngresoRequerimientoes\Delete.cshtml" />
-    <Content Include="Views\VistaIngresoRequerimientoes\Details.cshtml" />
-    <Content Include="Views\VistaIngresoRequerimientoes\Edit.cshtml" />
-    <Content Include="Views\VistaIngresoRequerimientoes\Index.cshtml" />
+    <Content Include="Views\Requerimiento\Create.cshtml" />
+    <Content Include="Views\Requerimiento\Delete.cshtml" />
+    <Content Include="Views\Requerimiento\Details.cshtml" />
+    <Content Include="Views\Requerimiento\Edit.cshtml" />
+    <Content Include="Views\Requerimiento\Index.cshtml" />
+    <Content Include="Views\Shared\_navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

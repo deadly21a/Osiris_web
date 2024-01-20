@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<WebApplication1.DataAccess.VistaIngresoRequerimiento>
 
 @{
-    ViewBag.Title = "VistaIngresoRequerimiento";
+    ViewBag.Title = "Index";
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VistaIngresoRequerimiento</h2>
+<h2> Consulta de Requerimiento</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -90,9 +88,10 @@
             @Html.DisplayFor(modelItem => item.F_Plazo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ingreso_requerimiento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_ingreso_requerimiento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ingreso_requerimiento })
+            
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_ingreso_requerimiento })
+            @Html.ActionLink("Details", "Details", new { id = item.ID_ingreso_requerimiento })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_ingreso_requerimiento })
         </td>
     </tr>
 }

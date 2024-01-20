@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -27,7 +28,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ingreso_requerimiento ingreso_requerimiento = db.ingreso_requerimiento.Find(id);
+            ingreso_requerimiento ingreso_requerimiento= db.ingreso_requerimiento.Find(id);
             if (ingreso_requerimiento == null)
             {
                 return HttpNotFound();

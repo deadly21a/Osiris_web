@@ -10,7 +10,7 @@ namespace WebApplication1.Models
         public DateTime fecha_ingreso { get; set; }
         public int Estado { get; set; }
         public int Solicitante { get; set; }
-        public int Tipo_requerimiento { get; set; }
+        public int TipoRequerimiento { get; set; }
         public int Prioridad { get; set; }
         public string Requerimiento { get; set; }
         public int Proyecto { get; set; }

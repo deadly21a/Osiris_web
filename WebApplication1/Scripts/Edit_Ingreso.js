@@ -1,17 +1,17 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
-    // Función para obtener la fecha y hora actual en el formato adecuado
-    function getCurrentDateTime() {
-        return moment().format('YYYY-MM-DD HH:mm');
-    }
+﻿$(document).ready(function () {
 
-    // Configuración inicial de la fecha de ingreso
-    document.getElementById('fecha_ingreso').value = getCurrentDateTime();
+//    var data = ingreso_requerimiento();
+
     
+//    $.each(data.DdetAplicacion, function (index, item) {
+//        var option = new Option(item.text, item.id);
+//        $('#ID_Aplicacion').append(option);
+//    });
+//    $('#ID_Aplicacion').val(data.detAplicacion[0].text);
+//    $('#TipoAplicacion').val(data.detAplicacion[0].id);
+//});
     
-});
-
-
-
+IdAplicacion
 
 $('#ID_Aplicacion').select2({
     width: '100%', allowClear: true,
@@ -24,7 +24,7 @@ $('#ID_Aplicacion').select2({
 
             var query = {
                 ID_Aplicacion: id_Aplicacion == null ? 0 : id_Aplicacion,
-                
+
             }
 
             return query;
@@ -257,16 +257,16 @@ $('#ID_Hardware').on('select2:unselect', function (e) {
     $('#IdHardware').val(0)
 });
 
- $("#BtnCancelar").on("click", function (e) {
-        var agree = confirm("¿Realmente deseas eliminar los datos?");
+$("#BtnCancelar").on("click", function (e) {
+    var agree = confirm("¿Realmente deseas eliminar los datos?");
 
-        if (!agree) {
-            e.preventDefault();
-        } else {
-            
-            location.reload();
-        }
- });
+    if (!agree) {
+        e.preventDefault();
+    } else {
+
+        location.reload();
+    }
+});
 
 
 
@@ -274,9 +274,9 @@ $('#ID_Hardware').on('select2:unselect', function (e) {
 $("#BtnEnviarDatos").on("click", function () {
     // Recolecta los datos que deseas enviar al servidor
 
-     
-    var fplazo = moment($("#F_Plazo").val()).format('YYYY-MM-DD HH:mm');  
-    
+
+    var fplazo = moment($("#F_Plazo").val()).format('YYYY-MM-DD HH:mm');
+
     var datos = {
         fecha_ingreso: $("#fecha_ingreso").val(),
         ID_ingreso_requerimiento: $("#ID_ingreso_requerimiento").val(),
@@ -296,8 +296,8 @@ $("#BtnEnviarDatos").on("click", function () {
     console.log("Data", datos);
 
     $.ajax({
-        type: "POST",
-        url: '/Requerimiento/BtnEnviarDatos',
+        type: "Get",
+        url: '/Requerimiento/Edit',
 
         data: {
             ID_ingreso_requerimiento: $("#ID_ingreso_requerimiento").val(),
@@ -316,7 +316,7 @@ $("#BtnEnviarDatos").on("click", function () {
         },
     }).done(function (result) {
         if (result.success) {
-            alert(result.message);  
+            alert(result.message);
             // Recargar la página si el requerimiento se guarda exitosamente
             location.reload();
         } else {

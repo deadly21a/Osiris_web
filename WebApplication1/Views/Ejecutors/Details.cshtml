@@ -1,0 +1,27 @@
+﻿@model WebApplication1.DataAccess.Ejecutor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ejecutor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoEjecutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoEjecutor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Ejecutor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

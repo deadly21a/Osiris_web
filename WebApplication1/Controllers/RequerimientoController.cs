@@ -449,7 +449,7 @@ namespace WebApplication1.Controllers
                             ID_Prioridad = model.ID_Prioridad,
                             Requerimiento = model.Requerimiento,
                             ID_Proyecto = model.ID_Proyecto,
-                            ID_Aplicacion = model.ID_Aplicacion,  
+                            ID_Aplicacion = model.ID_Aplicacion,
                             Opcion = model.Opcion,
                             ID_Hardware = model.ID_Hardware,
                             Comentario = model.Comentario,

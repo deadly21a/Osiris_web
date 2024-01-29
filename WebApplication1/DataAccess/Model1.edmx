@@ -12,6 +12,13 @@
           <Property Name="ID_Aplicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoAplicacion" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Ejecutor">
+          <Key>
+            <PropertyRef Name="ID_Ejecutor" />
+          </Key>
+          <Property Name="ID_Ejecutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoEjecutor" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Estado">
           <Key>
             <PropertyRef Name="ID_Estado" />
@@ -58,32 +65,57 @@
           <Property Name="ID_Proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoMantenimiento" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Requerimiento_asignado">
+        <EntityType Name="Publicado">
           <Key>
-            <PropertyRef Name="Ingreso_requerimiento_id" />
+            <PropertyRef Name="ID_Publicado" />
           </Key>
-          <Property Name="Ingreso_requerimiento_id" Type="int" Nullable="false" />
-          <Property Name="f_asig" Type="date" />
-          <Property Name="Solicitante" Type="varchar" MaxLength="50" />
-          <Property Name="ejecutor" Type="varchar" MaxLength="50" />
-          <Property Name="Requerimiento" Type="varchar(max)" />
-          <Property Name="Duracion_Hr" Type="int" />
-          <Property Name="f_inicial" Type="date" />
-          <Property Name="f_final" Type="date" />
-          <Property Name="cumplimiento_percent" Type="int" />
-          <Property Name="comentario_Req" Type="varchar(max)" />
-          <Property Name="comentario_Rev" Type="varchar(max)" />
-          <Property Name="Publicado" Type="bit" />
+          <Property Name="ID_Publicado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPublicado" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Revision_requerimiento">
+        <EntityType Name="RequerimientoAsignado">
           <Key>
-            <PropertyRef Name="Ingreso_requerimiento_id" />
+            <PropertyRef Name="ID_RequerimientoAsignado" />
           </Key>
-          <Property Name="Ingreso_requerimiento_id" Type="int" Nullable="false" />
-          <Property Name="F_revision" Type="date" />
+          <Property Name="ID_RequerimientoAsignado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ingreso_requerimiento" Type="int" Nullable="false" />
+          <Property Name="ID_Solicitante" Type="int" />
+          <Property Name="Requerimiento" Type="varchar(max)" />
+          <Property Name="F_revision" Type="datetime" />
           <Property Name="Comentario_rev" Type="varchar(max)" />
-          <Property Name="Duracion_Hr" Type="int" />
-          <Property Name="Ejecutor" Type="varchar" MaxLength="50" />
+          <Property Name="Duracion_Hr" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ID_Ejecutor" Type="int" />
+          <Property Name="Comentario_asig" Type="varchar(max)" />
+          <Property Name="Cumplimiento" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="F_inicio" Type="datetime" />
+          <Property Name="F_fin" Type="datetime" />
+          <Property Name="ID_Publicado" Type="int" />
+          <Property Name="ID_Estado" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Osiris.dbo.RevisionRequerimiento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="RevisionRequerimiento">
+          <Key>
+            <PropertyRef Name="ID_RevisionRequerimiento" />
+            <PropertyRef Name="ID_ingreso_requerimiento" />
+          </Key>
+          <Property Name="ID_RevisionRequerimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ingreso_requerimiento" Type="int" Nullable="false" />
+          <Property Name="ID_Estado" Type="int" />
+          <Property Name="ID_Solicitante" Type="int" />
+          <Property Name="ID_Tipo_requerimiento" Type="int" />
+          <Property Name="ID_Prioridad" Type="int" />
+          <Property Name="Requerimiento" Type="varchar(max)" />
+          <Property Name="ID_Proyecto" Type="int" />
+          <Property Name="ID_Aplicacion" Type="int" />
+          <Property Name="Opcion" Type="varchar(max)" />
+          <Property Name="ID_Hardware" Type="int" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+          <Property Name="F_Plazo" Type="datetime" />
+          <Property Name="F_revision" Type="datetime" />
+          <Property Name="Comentario_rev" Type="varchar(max)" />
+          <Property Name="Duracion_Hr" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ID_Usuario" Type="int" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
@@ -108,6 +140,15 @@
           </Key>
           <Property Name="ID_Tipo_requerimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoRequerimiento" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Osiris.dbo.UsuarioRevision' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="UsuarioRevision">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Osiris.dbo.Edit_view' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -148,6 +189,30 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           <Property Name="fecha_ingreso" Type="datetime" />
           <Property Name="F_Plazo" Type="datetime" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Osiris.dbo.VistaRevisionRequerimiento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VistaRevisionRequerimiento">
+          <Key>
+            <PropertyRef Name="ID_ingreso_requerimiento" />
+          </Key>
+          <Property Name="ID_ingreso_requerimiento" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Solicitante" Type="varchar" MaxLength="50" />
+          <Property Name="TipoRequerimiento" Type="varchar" MaxLength="50" />
+          <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+          <Property Name="Requerimiento" Type="varchar(max)" />
+          <Property Name="Proyecto" Type="varchar" MaxLength="50" />
+          <Property Name="Aplicacion" Type="varchar" MaxLength="50" />
+          <Property Name="Opcion" Type="varchar(max)" />
+          <Property Name="Hardware" Type="varchar" MaxLength="50" />
+          <Property Name="UsuarioRevision" Type="varchar" MaxLength="50" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="fecha_ingreso" Type="datetime" />
+          <Property Name="F_Plazo" Type="datetime" />
+          <Property Name="F_revision" Type="datetime" />
+          <Property Name="Comentario_rev" Type="varchar(max)" />
+          <Property Name="Duracion_Hr" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -181,16 +246,45 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="OsirisModelStoreContainer">
           <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ejecutor" EntityType="Self.Ejecutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ingreso_requerimiento" EntityType="Self.ingreso_requerimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prioridad" EntityType="Self.Prioridad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Requerimiento_asignado" EntityType="Self.Requerimiento_asignado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Revision_requerimiento" EntityType="Self.Revision_requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicado" EntityType="Self.Publicado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequerimientoAsignado" EntityType="Self.RequerimientoAsignado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Solicitante" EntityType="Self.Solicitante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_requerimiento" EntityType="Self.Tipo_requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RevisionRequerimiento" EntityType="Self.RevisionRequerimiento" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RevisionRequerimiento].[ID_RevisionRequerimiento] AS [ID_RevisionRequerimiento], 
+    [RevisionRequerimiento].[ID_ingreso_requerimiento] AS [ID_ingreso_requerimiento], 
+    [RevisionRequerimiento].[ID_Estado] AS [ID_Estado], 
+    [RevisionRequerimiento].[ID_Solicitante] AS [ID_Solicitante], 
+    [RevisionRequerimiento].[ID_Tipo_requerimiento] AS [ID_Tipo_requerimiento], 
+    [RevisionRequerimiento].[ID_Prioridad] AS [ID_Prioridad], 
+    [RevisionRequerimiento].[Requerimiento] AS [Requerimiento], 
+    [RevisionRequerimiento].[ID_Proyecto] AS [ID_Proyecto], 
+    [RevisionRequerimiento].[ID_Aplicacion] AS [ID_Aplicacion], 
+    [RevisionRequerimiento].[Opcion] AS [Opcion], 
+    [RevisionRequerimiento].[ID_Hardware] AS [ID_Hardware], 
+    [RevisionRequerimiento].[Comentario] AS [Comentario], 
+    [RevisionRequerimiento].[fecha_ingreso] AS [fecha_ingreso], 
+    [RevisionRequerimiento].[F_Plazo] AS [F_Plazo], 
+    [RevisionRequerimiento].[F_revision] AS [F_revision], 
+    [RevisionRequerimiento].[Comentario_rev] AS [Comentario_rev], 
+    [RevisionRequerimiento].[Duracion_Hr] AS [Duracion_Hr], 
+    [RevisionRequerimiento].[ID_Usuario] AS [ID_Usuario]
+    FROM [dbo].[RevisionRequerimiento] AS [RevisionRequerimiento]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsuarioRevision" EntityType="Self.UsuarioRevision" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsuarioRevision].[ID_Usuario] AS [ID_Usuario], 
+    [UsuarioRevision].[TipoUsuario] AS [TipoUsuario]
+    FROM [dbo].[UsuarioRevision] AS [UsuarioRevision]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Edit_view" EntityType="Self.Edit_view" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Edit_view].[Ingreso_requerimiento_id] AS [Ingreso_requerimiento_id], 
@@ -224,6 +318,27 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
     [VistaIngresoRequerimiento].[F_Plazo] AS [F_Plazo]
     FROM [dbo].[VistaIngresoRequerimiento] AS [VistaIngresoRequerimiento]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VistaRevisionRequerimiento" EntityType="Self.VistaRevisionRequerimiento" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VistaRevisionRequerimiento].[ID_ingreso_requerimiento] AS [ID_ingreso_requerimiento], 
+    [VistaRevisionRequerimiento].[Estado] AS [Estado], 
+    [VistaRevisionRequerimiento].[Solicitante] AS [Solicitante], 
+    [VistaRevisionRequerimiento].[TipoRequerimiento] AS [TipoRequerimiento], 
+    [VistaRevisionRequerimiento].[Prioridad] AS [Prioridad], 
+    [VistaRevisionRequerimiento].[Requerimiento] AS [Requerimiento], 
+    [VistaRevisionRequerimiento].[Proyecto] AS [Proyecto], 
+    [VistaRevisionRequerimiento].[Aplicacion] AS [Aplicacion], 
+    [VistaRevisionRequerimiento].[Opcion] AS [Opcion], 
+    [VistaRevisionRequerimiento].[Hardware] AS [Hardware], 
+    [VistaRevisionRequerimiento].[UsuarioRevision] AS [UsuarioRevision], 
+    [VistaRevisionRequerimiento].[Comentario] AS [Comentario], 
+    [VistaRevisionRequerimiento].[fecha_ingreso] AS [fecha_ingreso], 
+    [VistaRevisionRequerimiento].[F_Plazo] AS [F_Plazo], 
+    [VistaRevisionRequerimiento].[F_revision] AS [F_revision], 
+    [VistaRevisionRequerimiento].[Comentario_rev] AS [Comentario_rev], 
+    [VistaRevisionRequerimiento].[Duracion_Hr] AS [Duracion_Hr]
+    FROM [dbo].[VistaRevisionRequerimiento] AS [VistaRevisionRequerimiento]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -235,6 +350,13 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           </Key>
           <Property Name="ID_Aplicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoAplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ejecutor">
+          <Key>
+            <PropertyRef Name="ID_Ejecutor" />
+          </Key>
+          <Property Name="ID_Ejecutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoEjecutor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -282,32 +404,31 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           <Property Name="ID_Proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoMantenimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Requerimiento_asignado">
+        <EntityType Name="Publicado">
           <Key>
-            <PropertyRef Name="Ingreso_requerimiento_id" />
+            <PropertyRef Name="ID_Publicado" />
           </Key>
-          <Property Name="Ingreso_requerimiento_id" Type="Int32" Nullable="false" />
-          <Property Name="f_asig" Type="DateTime" Precision="0" />
-          <Property Name="Solicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ejecutor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Duracion_Hr" Type="Int32" />
-          <Property Name="f_inicial" Type="DateTime" Precision="0" />
-          <Property Name="f_final" Type="DateTime" Precision="0" />
-          <Property Name="cumplimiento_percent" Type="Int32" />
-          <Property Name="comentario_Req" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="comentario_Rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Publicado" Type="Boolean" />
+          <Property Name="ID_Publicado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPublicado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Revision_requerimiento">
+        <EntityType Name="RequerimientoAsignado">
           <Key>
-            <PropertyRef Name="Ingreso_requerimiento_id" />
+            <PropertyRef Name="ID_RequerimientoAsignado" />
           </Key>
-          <Property Name="Ingreso_requerimiento_id" Type="Int32" Nullable="false" />
-          <Property Name="F_revision" Type="DateTime" Precision="0" />
+          <Property Name="ID_RequerimientoAsignado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ingreso_requerimiento" Type="Int32" Nullable="false" />
+          <Property Name="ID_Solicitante" Type="Int32" />
+          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="F_revision" Type="DateTime" Precision="3" />
           <Property Name="Comentario_rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Duracion_Hr" Type="Int32" />
-          <Property Name="Ejecutor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion_Hr" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_Ejecutor" Type="Int32" />
+          <Property Name="Comentario_asig" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cumplimiento" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_inicio" Type="DateTime" Precision="3" />
+          <Property Name="F_fin" Type="DateTime" Precision="3" />
+          <Property Name="ID_Publicado" Type="Int32" />
+          <Property Name="ID_Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
@@ -333,6 +454,37 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           <Property Name="ID_Tipo_requerimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoRequerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="RevisionRequerimiento">
+          <Key>
+            <PropertyRef Name="ID_RevisionRequerimiento" />
+            <PropertyRef Name="ID_ingreso_requerimiento" />
+          </Key>
+          <Property Name="ID_RevisionRequerimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ingreso_requerimiento" Type="Int32" Nullable="false" />
+          <Property Name="ID_Estado" Type="Int32" />
+          <Property Name="ID_Solicitante" Type="Int32" />
+          <Property Name="ID_Tipo_requerimiento" Type="Int32" />
+          <Property Name="ID_Prioridad" Type="Int32" />
+          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Proyecto" Type="Int32" />
+          <Property Name="ID_Aplicacion" Type="Int32" />
+          <Property Name="Opcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Hardware" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="F_Plazo" Type="DateTime" Precision="3" />
+          <Property Name="F_revision" Type="DateTime" Precision="3" />
+          <Property Name="Comentario_rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion_Hr" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_Usuario" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UsuarioRevision">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Edit_view">
           <Key>
             <PropertyRef Name="Ingreso_requerimiento_id" />
@@ -350,19 +502,64 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           <Property Name="comentario_Rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Publicado" Type="Boolean" />
         </EntityType>
+        <EntityType Name="VistaIngresoRequerimiento">
+          <Key>
+            <PropertyRef Name="ID_ingreso_requerimiento" />
+          </Key>
+          <Property Name="ID_ingreso_requerimiento" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Solicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoRequerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prioridad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Proyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Opcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Hardware" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="F_Plazo" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VistaRevisionRequerimiento">
+          <Key>
+            <PropertyRef Name="ID_ingreso_requerimiento" />
+          </Key>
+          <Property Name="ID_ingreso_requerimiento" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Solicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoRequerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prioridad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Proyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Opcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Hardware" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioRevision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+          <Property Name="F_Plazo" Type="DateTime" Precision="3" />
+          <Property Name="F_revision" Type="DateTime" Precision="3" />
+          <Property Name="Comentario_rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion_Hr" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityContainer Name="OsirisEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" />
+          <EntitySet Name="Ejecutor" EntityType="Self.Ejecutor" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Hardware" EntityType="Self.Hardware" />
           <EntitySet Name="ingreso_requerimiento" EntityType="Self.ingreso_requerimiento" />
           <EntitySet Name="Prioridad" EntityType="Self.Prioridad" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
-          <EntitySet Name="Requerimiento_asignado" EntityType="Self.Requerimiento_asignado" />
-          <EntitySet Name="Revision_requerimiento" EntityType="Self.Revision_requerimiento" />
+          <EntitySet Name="Publicado" EntityType="Self.Publicado" />
+          <EntitySet Name="RequerimientoAsignado" EntityType="Self.RequerimientoAsignado" />
           <EntitySet Name="Solicitante" EntityType="Self.Solicitante" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tipo_requerimiento" EntityType="Self.Tipo_requerimiento" />
+          <EntitySet Name="RevisionRequerimiento" EntityType="Self.RevisionRequerimiento" />
+          <EntitySet Name="UsuarioRevision" EntityType="Self.UsuarioRevision" />
           <EntitySet Name="Edit_view" EntityType="Self.Edit_view" />
+          <EntitySet Name="VistaIngresoRequerimiento" EntityType="Self.VistaIngresoRequerimiento" />
+          <EntitySet Name="VistaRevisionRequerimiento" EntityType="Self.VistaRevisionRequerimiento" />
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -393,7 +590,6 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="VistaIngresoRequerimiento" EntityType="OsirisModel.VistaIngresoRequerimiento" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -406,24 +602,6 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="VistaIngresoRequerimiento">
-          <Key>
-            <PropertyRef Name="ID_ingreso_requerimiento" />
-          </Key>
-          <Property Name="ID_ingreso_requerimiento" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Solicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TipoRequerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Prioridad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Requerimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Proyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Opcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Hardware" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
-          <Property Name="F_Plazo" Type="DateTime" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -435,6 +613,14 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
               <MappingFragment StoreEntitySet="Aplicacion">
                 <ScalarProperty Name="ID_Aplicacion" ColumnName="ID_Aplicacion" />
                 <ScalarProperty Name="TipoAplicacion" ColumnName="TipoAplicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejecutor">
+            <EntityTypeMapping TypeName="OsirisModel.Ejecutor">
+              <MappingFragment StoreEntitySet="Ejecutor">
+                <ScalarProperty Name="ID_Ejecutor" ColumnName="ID_Ejecutor" />
+                <ScalarProperty Name="TipoEjecutor" ColumnName="TipoEjecutor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -489,32 +675,31 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Requerimiento_asignado">
-            <EntityTypeMapping TypeName="OsirisModel.Requerimiento_asignado">
-              <MappingFragment StoreEntitySet="Requerimiento_asignado">
-                <ScalarProperty Name="Ingreso_requerimiento_id" ColumnName="Ingreso_requerimiento_id" />
-                <ScalarProperty Name="f_asig" ColumnName="f_asig" />
-                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
-                <ScalarProperty Name="ejecutor" ColumnName="ejecutor" />
-                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
-                <ScalarProperty Name="Duracion_Hr" ColumnName="Duracion_Hr" />
-                <ScalarProperty Name="f_inicial" ColumnName="f_inicial" />
-                <ScalarProperty Name="f_final" ColumnName="f_final" />
-                <ScalarProperty Name="cumplimiento_percent" ColumnName="cumplimiento_percent" />
-                <ScalarProperty Name="comentario_Req" ColumnName="comentario_Req" />
-                <ScalarProperty Name="comentario_Rev" ColumnName="comentario_Rev" />
-                <ScalarProperty Name="Publicado" ColumnName="Publicado" />
+          <EntitySetMapping Name="Publicado">
+            <EntityTypeMapping TypeName="OsirisModel.Publicado">
+              <MappingFragment StoreEntitySet="Publicado">
+                <ScalarProperty Name="ID_Publicado" ColumnName="ID_Publicado" />
+                <ScalarProperty Name="TipoPublicado" ColumnName="TipoPublicado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Revision_requerimiento">
-            <EntityTypeMapping TypeName="OsirisModel.Revision_requerimiento">
-              <MappingFragment StoreEntitySet="Revision_requerimiento">
-                <ScalarProperty Name="Ingreso_requerimiento_id" ColumnName="Ingreso_requerimiento_id" />
+          <EntitySetMapping Name="RequerimientoAsignado">
+            <EntityTypeMapping TypeName="OsirisModel.RequerimientoAsignado">
+              <MappingFragment StoreEntitySet="RequerimientoAsignado">
+                <ScalarProperty Name="ID_RequerimientoAsignado" ColumnName="ID_RequerimientoAsignado" />
+                <ScalarProperty Name="ID_ingreso_requerimiento" ColumnName="ID_ingreso_requerimiento" />
+                <ScalarProperty Name="ID_Solicitante" ColumnName="ID_Solicitante" />
+                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
                 <ScalarProperty Name="F_revision" ColumnName="F_revision" />
                 <ScalarProperty Name="Comentario_rev" ColumnName="Comentario_rev" />
                 <ScalarProperty Name="Duracion_Hr" ColumnName="Duracion_Hr" />
-                <ScalarProperty Name="Ejecutor" ColumnName="Ejecutor" />
+                <ScalarProperty Name="ID_Ejecutor" ColumnName="ID_Ejecutor" />
+                <ScalarProperty Name="Comentario_asig" ColumnName="Comentario_asig" />
+                <ScalarProperty Name="Cumplimiento" ColumnName="Cumplimiento" />
+                <ScalarProperty Name="F_inicio" ColumnName="F_inicio" />
+                <ScalarProperty Name="F_fin" ColumnName="F_fin" />
+                <ScalarProperty Name="ID_Publicado" ColumnName="ID_Publicado" />
+                <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -545,6 +730,38 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RevisionRequerimiento">
+            <EntityTypeMapping TypeName="OsirisModel.RevisionRequerimiento">
+              <MappingFragment StoreEntitySet="RevisionRequerimiento">
+                <ScalarProperty Name="ID_RevisionRequerimiento" ColumnName="ID_RevisionRequerimiento" />
+                <ScalarProperty Name="ID_ingreso_requerimiento" ColumnName="ID_ingreso_requerimiento" />
+                <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
+                <ScalarProperty Name="ID_Solicitante" ColumnName="ID_Solicitante" />
+                <ScalarProperty Name="ID_Tipo_requerimiento" ColumnName="ID_Tipo_requerimiento" />
+                <ScalarProperty Name="ID_Prioridad" ColumnName="ID_Prioridad" />
+                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Aplicacion" ColumnName="ID_Aplicacion" />
+                <ScalarProperty Name="Opcion" ColumnName="Opcion" />
+                <ScalarProperty Name="ID_Hardware" ColumnName="ID_Hardware" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="F_Plazo" ColumnName="F_Plazo" />
+                <ScalarProperty Name="F_revision" ColumnName="F_revision" />
+                <ScalarProperty Name="Comentario_rev" ColumnName="Comentario_rev" />
+                <ScalarProperty Name="Duracion_Hr" ColumnName="Duracion_Hr" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioRevision">
+            <EntityTypeMapping TypeName="OsirisModel.UsuarioRevision">
+              <MappingFragment StoreEntitySet="UsuarioRevision">
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Edit_view">
             <EntityTypeMapping TypeName="OsirisModel.Edit_view">
               <MappingFragment StoreEntitySet="Edit_view">
@@ -560,6 +777,48 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
                 <ScalarProperty Name="comentario_Req" ColumnName="comentario_Req" />
                 <ScalarProperty Name="comentario_Rev" ColumnName="comentario_Rev" />
                 <ScalarProperty Name="Publicado" ColumnName="Publicado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistaIngresoRequerimiento">
+            <EntityTypeMapping TypeName="OsirisModel.VistaIngresoRequerimiento">
+              <MappingFragment StoreEntitySet="VistaIngresoRequerimiento">
+                <ScalarProperty Name="ID_ingreso_requerimiento" ColumnName="ID_ingreso_requerimiento" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="TipoRequerimiento" ColumnName="TipoRequerimiento" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+                <ScalarProperty Name="Opcion" ColumnName="Opcion" />
+                <ScalarProperty Name="Hardware" ColumnName="Hardware" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="F_Plazo" ColumnName="F_Plazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistaRevisionRequerimiento">
+            <EntityTypeMapping TypeName="OsirisModel.VistaRevisionRequerimiento">
+              <MappingFragment StoreEntitySet="VistaRevisionRequerimiento">
+                <ScalarProperty Name="ID_ingreso_requerimiento" ColumnName="ID_ingreso_requerimiento" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="TipoRequerimiento" ColumnName="TipoRequerimiento" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+                <ScalarProperty Name="Opcion" ColumnName="Opcion" />
+                <ScalarProperty Name="Hardware" ColumnName="Hardware" />
+                <ScalarProperty Name="UsuarioRevision" ColumnName="UsuarioRevision" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="F_Plazo" ColumnName="F_Plazo" />
+                <ScalarProperty Name="F_revision" ColumnName="F_revision" />
+                <ScalarProperty Name="Comentario_rev" ColumnName="Comentario_rev" />
+                <ScalarProperty Name="Duracion_Hr" ColumnName="Duracion_Hr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -587,25 +846,6 @@ advertencia 6002: La tabla o vista 'Osiris.dbo.VistaIngresoRequerimiento' no tie
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="OsirisModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="OsirisModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="VistaIngresoRequerimiento">
-            <EntityTypeMapping TypeName="OsirisModel.VistaIngresoRequerimiento">
-              <MappingFragment StoreEntitySet="VistaIngresoRequerimiento">
-                <ScalarProperty Name="F_Plazo" ColumnName="F_Plazo" />
-                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-                <ScalarProperty Name="Hardware" ColumnName="Hardware" />
-                <ScalarProperty Name="Opcion" ColumnName="Opcion" />
-                <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
-                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
-                <ScalarProperty Name="Requerimiento" ColumnName="Requerimiento" />
-                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
-                <ScalarProperty Name="TipoRequerimiento" ColumnName="TipoRequerimiento" />
-                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="ID_ingreso_requerimiento" ColumnName="ID_ingreso_requerimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

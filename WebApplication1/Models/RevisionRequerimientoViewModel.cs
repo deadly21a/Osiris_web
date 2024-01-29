@@ -7,23 +7,23 @@
     {
         public class RevisionRequerimientoViewModel
         {
-        public List<RevisionRequerimientoViewModel> Revision { get; set; }
-        public int ID { get; set; }
+        public int ID_ingreso_requerimiento {  get; set; }
         public DateTime fecha_ingreso { get; set; }
-        public string Estado { get; set; }
-        public string Solicitante { get; set; }
-        public string Tipo_requerimiento { get; set; }
-        public int prioridad { get; set; }
+        public int ID_Estado { get; set; }
+        public int ID_Solicitante { get; set; }
+        public int ID_Tipo_requerimiento { get; set; }
+        public int ID_Prioridad { get; set; }
         public string Requerimiento { get; set; }
-        public string Proyecto { get; set; }
-        public string Aplicacion { get; set; }
+        public int ID_Proyecto { get; set; }
+        public int ID_Aplicacion { get; set; }
         public string Opcion { get; set; }
-        public string Hardware { get; set; }
+        public int ID_Hardware { get; set; }
         public string Comentario { get; set; }
         public DateTime F_Plazo { get; set; }
-        public string ComentarioRev { get; set; }
-        public string Duracion { get; set; }
-        public string Ejecutor { get; set; }
+        public DateTime F_revision { get; set; }
+        public string Comentario_rev { get; set; }
+        public decimal Duracion_Hr { get; set; }
+        public int ID_Usuario { get; set; }
 
         }
     }

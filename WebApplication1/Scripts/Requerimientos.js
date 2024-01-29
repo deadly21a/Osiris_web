@@ -11,7 +11,7 @@
 });
 
 
-
+IdAplicacion
 
 $('#ID_Aplicacion').select2({
     width: '100%', allowClear: true,

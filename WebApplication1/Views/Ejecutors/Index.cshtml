@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplication1.DataAccess.Ejecutor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoEjecutor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoEjecutor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Ejecutor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Ejecutor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Ejecutor })
+
+        </td>
+    </tr>
+}
+
+</table>

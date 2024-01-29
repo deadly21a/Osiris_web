@@ -15,7 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.TipoAplicacion)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -24,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.TipoAplicacion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Aplicacion }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_Aplicacion }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Aplicacion })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_Aplicacion }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID_Aplicacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_Aplicacion })
         </td>
     </tr>
 }

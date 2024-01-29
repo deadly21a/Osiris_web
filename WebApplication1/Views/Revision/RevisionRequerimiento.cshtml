@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "RevisionRequerimiento";
+}
+
+<div class="container">
+    <div class="header">
+        <h2>Revision de Requerimiento</h2>
+    </div>
+    <!-- Buscador por ID en la sección General -->
+    <div class="form-group">
+        <label for="IdBusqueda">Buscar por ID</label>
+        <input type="text" id="IdBusqueda" class="form-control">
+        <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+    </div>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos de Ingreso Requerimiento</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="form-group">
+                            <label for="fecha_ingreso">Fecha de Ingreso</label>
+                            <input type="datetime" id="fecha_ingreso" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_ingreso_requerimiento">ID</label>
+                            <input type="text" id="ID_ingreso_requerimiento" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Estado">Estado</label>
+                            <input type="text" id="ID_Estado" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Solicitante">Solicitante</label>
+                            <input type="text" id="ID_Solicitante" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Tipo_requerimiento">Tipo de Requerimiento</label>
+                            <input type="text" id="ID_Tipo_requerimiento" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Prioridad">Prioridad</label>
+                            <input type="text" id="ID_Prioridad" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="Requerimiento">Requerimiento</label>
+                            <input type="text" id="Requerimiento" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Proyecto">Proyecto</label>
+                            <input type="text" id="ID_Proyecto" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Aplicacion">Aplicación</label>
+                            <input type="text" id="ID_Aplicacion" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="Opcion">Opción</label>
+                            <input type="text" id="Opcion" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Hardware">Hardware</label>
+                            <input type="text" id="ID_Hardware" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="Comentario">Comentario</label>
+                            <input type="text" id="Comentario" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="F_Plazo">F.Plazo</label>
+                            <input type="datetime" id="F_Plazo" class="form-control" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos de Revision de Requirimiento </h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Campos específicos de Budget -->
+                        <div class="form-group">
+                            <label for="F_revision">Fecha Revision</label>
+                            <input type="datetime-local" id="F_revision" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="Comentario_rev">Comentario Revision.</label>
+                            <textarea id="Comentario_rev" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Duracion_Hr">Duración (Hr)</label>
+                            <input type="text" id="Duracion_Hr" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Usuario">Usuario De Revision</label>
+                            <select id="ID_Usuario" class="form-control">
+                            </select>
+                            <input type="text" id="IdUsuario" class="form-control" hidden>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @*<a href="#" class="btn btn-secondary">Cancel</a>*@
+                <button type="submit" id="BtnCancelar" class="btn btn-secondary">Cancel</button>
+                <button type="submit" id="BtnEnviarDatos" class="btn btn-success float-right">Subir Requerimiento</button>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="/Scripts/Revision.js"></script>

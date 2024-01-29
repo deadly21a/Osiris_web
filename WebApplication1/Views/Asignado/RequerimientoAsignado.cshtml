@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "RequerimientoAsignado";
+}
+
+<div class="container">
+    <div class="header">
+        <h2>Revision de Requerimiento</h2>
+    </div>
+    <!-- Buscador por ID en la sección General -->
+    <div class="form-group">
+        <label for="IdBusqueda">Buscar por ID</label>
+        <input type="text" id="IdBusqueda" class="form-control">
+        <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+    </div>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">General</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body" style="display: block;">
+                        <div class="form-group">
+                            <label for="F_revision">Fecha Revision</label>
+                            <input type="datetime" id="F_revision" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_ingreso_requerimiento">ID</label>
+                            <input type="text" id="ID_ingreso_requerimiento" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Estado">Estado</label>
+                            <input type="text" id="ID_Estado" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Solicitante">Solicitante</label>
+                            <input type="text" id="ID_Solicitante" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Ejecutor">Ejecutor</label>
+                            <select id="ID_Ejecutor" class="form-control">
+                            </select>
+                            <input type="text" id="IdEjecutor" class="form-control" hidden>
+                        </div>
+                        <div class="form-group">
+                            <label for="Requerimiento">Requerimiento</label>
+                            <input type="text" id="Requerimiento" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="Duracion_Hr">Duración (Hr)</label>
+                            <input type="text" id="Duracion_Hr" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Budget</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="F_inicio">Fecha Inicio</label>
+                            <input type="datetime-local" id="F_inicio" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="F_fin">Fecha fin</label>
+                            <input type="datetime-local" id="F_fin" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="Cumplimiento">% Cumplimiento</label>
+                            <input type="text" id="Cumplimiento" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Comentario_asig">Comentario Asignado.</label>
+                            <textarea id="Comentario_asig" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Comentario_rev">Comentario Revision</label>
+                            <input type="text" id="Comentario_rev" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="ID_Publicado">Publicado</label>
+                            <select id="ID_Publicado" class="form-control">
+                            </select>
+                            <input type="text" id="IdPublicado" class="form-control" hidden>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" id="BtnCancelar" class="btn btn-secondary">Cancel</button>
+                <button type="submit" id="BtnEnviarDatos" class="btn btn-success float-right">Subir Asignacion</button>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="/Scripts/Asignacion.js"></script>

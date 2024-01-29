@@ -1,0 +1,156 @@
+﻿
+@model IEnumerable<WebApplication1.DataAccess.VistaRevisionRequerimiento>
+
+    @{
+        ViewBag.Title = "Index1";
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Consulta Revision Requerimiento</h2>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Tabla Revision Requerimiento</h3>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dt-buttons btn-group flex-wrap">
+                                <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
+                                    <span>Copy</span>
+                                </button>
+                                <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
+                                    <span>CSV</span>
+                                </button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
+                                    <span>Excel</span>
+                                </button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
+                                    <span>PDF</span>
+                                </button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button">
+                                    <span>Print</span>
+                                </button>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false">
+                                        <span>Column visibility</span>
+                                        <span class="dt-down-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="myTable" class="dataTables_wrapper dt-bootstrap5">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Estado</th>
+                                                    <th>Aplicacion</th>
+                                                    <th>Ejecutor</th>
+                                                    <th>Hardware</th>
+                                                    <th>Prioridad</th>
+                                                    <th>Proyecto</th>
+                                                    <th>Solicitante</th>
+                                                    <th>Tipo Requerimiento</th>
+                                                    <th>Requerimiento</th>
+                                                    <th>Opcion</th>
+                                                    <th>Comentario</th>
+                                                    <th>Comentario Revision</th>
+                                                    <th>Duracion</th>
+                                                    <th>fecha Ingreso</th>
+                                                    <th>fecha Plazo</th>
+                                                    <th>Fecha Revision</th>
+                                                    <th>
+B                               </th>
+
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                
+                                                    @*@foreach (var revision in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@revision.ID_ingreso_requerimiento</td>
+                                                            <td>@revision.fecha_ingreso</td>
+                                                            <td>@revision.Estado</td>
+                                                            <td>@revision.Solicitante</td>
+                                                            <td>@revision.TipoRequerimiento</td>
+                                                            <td>@revision.Prioridad</td>
+                                                            <td>@revision.Requerimiento</td>
+                                                            <td>@revision.Proyecto</td>
+                                                            <td>@revision.Aplicacion</td>
+                                                            <td>@revision.Opcion</td>
+                                                            <td>@revision.Hardware</td>
+                                                            <td>@revision.Comentario</td>
+                                                            <td>@revision.F_Plazo</td>
+                                                            <td>@revision.F_revision</td>
+                                                            <td>@revision.Comentario_rev</td>
+                                                            <td>@revision.Duracion_Hr</td>
+                                                            <td>@revision.UsuarioRevision</td>
+                                                        </tr>
+                                                    }*@
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $("#myTable").DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "@Url.Content("/Revision/Json")",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "pageLength": 10,
+                    "responsivePriority": 1,
+                    "columns": [
+                        { "data": "ID_ingreso_requerimiento", "name": "Id", "autowidth": true },
+                        { "data": "Estado", "name": "Estado", "autowidth": true },
+                        { "data": "Aplicacion", "name": "Aplicacion", "autowidth": true },
+                        { "data": "UsuarioRevision", "name": "Ejecutor", "autowidth": true },
+                        { "data": "Hardware", "name": "Hardware", "autowidth": true },
+                        { "data": "Prioridad", "name": "Prioridad", "autowidth": true },
+                        { "data": "Proyecto", "name": "Proyecto", "autowidth": true },
+                        { "data": "Solicitante", "name": "Solicitante", "autowidth": true },
+                        { "data": "Tipo_requerimiento", "name": "Tipo Requerimiento", "autowidth": true },
+                        { "data": "Requerimiento", "name": "Requerimiento", "autowidth": true },
+                        { "data": "Opcion", "name": "Opcion", "autowidth": true },
+                        { "data": "Comentario", "name": "Comentario", "autowidth": true },
+                        { "data": "Comentario_rev", "name": "Comentario Revision", "autowidth": true },
+                        { "data": "Duracion_Hr", "name": "Duracion", "autowidth": true },
+                        { "data": "fecha_ingreso", "name": "fecha Ingreso", "autowidth": true },
+                        { "data": "F_Plazo", "name": "Fecha Plazo", "autowidth": true },
+                        { "data": "F_revision", "name": "Fecha Revision", "autowidth": true },
+                        {
+                            "title": "", "width": "5%", "orderable": false
+                            , "render": function (data, type, row) {
+                                var sCad = '';
+                                sCad = '<button type="button" class="btn btn-default btn-sm btnViewDoc" title="Ver referencia Documento"> ';
+                                sCad = sCad + '<i class="fas fa-eye"></i>';
+                                sCad = sCad + '</button>';
+                                return sCad;
+                            }
+                        }
+                    ]
+                });
+            });
+        </script>
+    }

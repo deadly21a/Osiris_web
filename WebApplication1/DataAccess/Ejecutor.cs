@@ -12,12 +12,9 @@ namespace WebApplication1.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Revision_requerimiento
+    public partial class Ejecutor
     {
-        public int Ingreso_requerimiento_id { get; set; }
-        public Nullable<System.DateTime> F_revision { get; set; }
-        public string Comentario_rev { get; set; }
-        public Nullable<int> Duracion_Hr { get; set; }
-        public string Ejecutor { get; set; }
+        public int ID_Ejecutor { get; set; }
+        public string TipoEjecutor { get; set; }
     }
 }

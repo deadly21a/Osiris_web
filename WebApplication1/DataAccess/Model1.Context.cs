@@ -28,18 +28,22 @@ namespace WebApplication1.DataAccess
         }
     
         public virtual DbSet<Aplicacion> Aplicacion { get; set; }
+        public virtual DbSet<Ejecutor> Ejecutor { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Hardware> Hardware { get; set; }
         public virtual DbSet<ingreso_requerimiento> ingreso_requerimiento { get; set; }
         public virtual DbSet<Prioridad> Prioridad { get; set; }
         public virtual DbSet<Proyecto> Proyecto { get; set; }
-        public virtual DbSet<Requerimiento_asignado> Requerimiento_asignado { get; set; }
-        public virtual DbSet<Revision_requerimiento> Revision_requerimiento { get; set; }
+        public virtual DbSet<Publicado> Publicado { get; set; }
+        public virtual DbSet<RequerimientoAsignado> RequerimientoAsignado { get; set; }
         public virtual DbSet<Solicitante> Solicitante { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tipo_requerimiento> Tipo_requerimiento { get; set; }
+        public virtual DbSet<RevisionRequerimiento> RevisionRequerimiento { get; set; }
+        public virtual DbSet<UsuarioRevision> UsuarioRevision { get; set; }
         public virtual DbSet<Edit_view> Edit_view { get; set; }
         public virtual DbSet<VistaIngresoRequerimiento> VistaIngresoRequerimiento { get; set; }
+        public virtual DbSet<VistaRevisionRequerimiento> VistaRevisionRequerimiento { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

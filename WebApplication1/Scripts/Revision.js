@@ -26,7 +26,6 @@
                         // Llena los demás campos según sea necesario
                     },
     error: function (error) {
-        // Maneja los errores de la solicitud AJAX
         console.error(error);
                     }
                 });

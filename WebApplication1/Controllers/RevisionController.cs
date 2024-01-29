@@ -55,30 +55,6 @@ namespace WebApplication1.Controllers
                 
         }
 
-        //[HttpPost]
-        //public JsonResult EnviarDatos(RevisionRequerimientoViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            using (OsirisEntities db = new OsirisEntities())
-        //            {
-        //                var datos = new Revision_requerimiento
-        //                {
-        //                    ID = model.ID,
-        //                    // fecha_ingreso = model.fecha_ingreso,
-        //                    Estado = model.Estado,
-        //                    Solicitante = model.Solicitante,
-        //                    Tipo_requerimiento = model.Tipo_requerimiento,
-        //                    prioridad = model.prioridad,
-        //                    Requerimiento = model.Requerimiento,
-        //                    Proyecto = model.Proyecto,
-        //                    Aplicacion = model.Aplicacion,
-        //                    Opcion = model.Opcion,
-        //                    Hardware = model.Hardware,
-        //                    Comentario = model.Comentario,
-        //                    F_Plazo = model.F_Plazo
 
         //                };
 

@@ -1,0 +1,124 @@
+﻿@model IEnumerable<WebApplication1.DataAccess.RevisionRequerimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Tipo_requerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Prioridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Proyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Aplicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Hardware)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_Plazo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_revision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario_rev)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracion_Hr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Tipo_requerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Prioridad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Requerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Proyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Aplicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Hardware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_ingreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_Plazo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_revision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario_rev)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracion_Hr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RevisionRequerimiento }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ID_RevisionRequerimiento  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.ID_RevisionRequerimiento  })
+        </td>
+    </tr>
+}
+
+</table>

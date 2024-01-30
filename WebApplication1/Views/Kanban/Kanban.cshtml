@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "kanbanData";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+@model Dictionary<string, List<WebApplication1.Models.RequerimientoViewModel>>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kanban de Requerimientos</title>
+    <style>
+        .kanban-board {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .kanban-column {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+            .kanban-column h3 {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+        .kanban-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="kanban-board">
+        @foreach (var estado in Model)
+        {
+            <div class="kanban-column">
+                <h3>@estado.Key</h3>
+                <div class="kanban-cards">
+                    @foreach (var requerimiento in estado.Value)
+                    {
+                        <div class="kanban-card" data-toggle="modal" data-target="#detalleRequerimientoModal">
+                            <h4>@requerimiento.ID</h4>
+                            <p>@requerimiento.Requerimiento</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div class="modal fade" id="DetKanban" tabindex="-1" role="dialog" style="overflow-y: scroll; max-height:90%; margin-top: 50px; margin-bottom:50px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content DetKanban">
+                <div class="modal-header">
+                    <h4 class="modal-title"> Historial Requisiciones </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body table-Kanban"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="/Scripts/Kanban.js"></script>

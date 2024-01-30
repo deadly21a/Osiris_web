@@ -169,10 +169,12 @@
     <Compile Include="Controllers\EjecutorsController.cs" />
     <Compile Include="Controllers\HardwaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KanbanController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RequerimientoAsignadoesController.cs" />
     <Compile Include="Controllers\RequerimientoController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
+    <Compile Include="Controllers\RevisionRequerimientoesController.cs" />
     <Compile Include="Controllers\SolicitantesController.cs" />
     <Compile Include="Controllers\UsuarioRevisionsController.cs" />
     <Compile Include="DataAccess\Aplicacion.cs">
@@ -258,6 +260,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IngresoRequerimientoViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RequerimientoViewModel.cs" />
     <Compile Include="Models\RevisionRequerimientoViewModel.cs" />
     <Compile Include="Models\VistaIngresoRequerimientoViewModels.cs" />
     <Compile Include="Models\VistaRequerimientoAsignadoViewModel.cs" />
@@ -2376,6 +2379,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Kanban.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Requerimientos.js" />
     <Content Include="Scripts\Revision.js" />
@@ -2460,6 +2464,13 @@
     <Content Include="Views\RequerimientoAsignadoes\Edit.cshtml" />
     <Content Include="Views\RequerimientoAsignadoes\Index.cshtml" />
     <Content Include="Views\Revision\Index.cshtml" />
+    <Content Include="Views\RevisionRequerimientoes\Create.cshtml" />
+    <Content Include="Views\RevisionRequerimientoes\Delete.cshtml" />
+    <Content Include="Views\RevisionRequerimientoes\Details.cshtml" />
+    <Content Include="Views\RevisionRequerimientoes\Edit.cshtml" />
+    <Content Include="Views\RevisionRequerimientoes\Index.cshtml" />
+    <Content Include="Views\Kanban\Kanban.cshtml" />
+    <Content Include="Views\Partial\Kanban\_DetKanban.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

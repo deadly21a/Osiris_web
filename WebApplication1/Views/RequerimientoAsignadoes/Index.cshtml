@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.ID_ingreso_requerimiento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Solicitante)
+            @Html.DisplayNameFor(model => model.Solicitante)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Requerimiento)
@@ -31,7 +31,7 @@
             @Html.DisplayNameFor(model => model.Duracion_Hr)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Ejecutor)
+            @Html.DisplayNameFor(model => model.Ejecutor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comentario_asig)
@@ -46,10 +46,10 @@
             @Html.DisplayNameFor(model => model.F_fin)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Publicado)
+            @Html.DisplayNameFor(model => model.Publicado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Estado)
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th></th>
     </tr>
@@ -60,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.ID_ingreso_requerimiento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Solicitante)
+            @Html.DisplayFor(modelItem => item.Solicitante)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Requerimiento)
@@ -75,7 +75,7 @@
             @Html.DisplayFor(modelItem => item.Duracion_Hr)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Ejecutor)
+            @Html.DisplayFor(modelItem => item.Ejecutor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comentario_asig)
@@ -90,15 +90,15 @@
             @Html.DisplayFor(modelItem => item.F_fin)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Publicado)
+            @Html.DisplayFor(modelItem => item.Publicado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Estado)
+            @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RequerimientoAsignado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_RequerimientoAsignado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_RequerimientoAsignado })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

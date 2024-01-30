@@ -7,7 +7,6 @@ namespace WebApplication1.Models
 {
     public class VistaRevisionRequerimientoViewModel
     {
-        public int ID_RevisionRequerimiento { get; set; }
         public int ID_ingreso_requerimiento { get; set; }
         public DateTime fecha_ingreso { get; set; }
         public int Estado { get; set; }

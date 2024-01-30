@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿
     var table = $('#myTable').DataTable({
         "autoWidth": true,
         "scrollY": true,
@@ -9,8 +9,8 @@
         orderable: false,
     });
 
-    ConsultaDatos();
-});
+
+ConsultaDatos();
 
 
 function ConsultaDatos() {

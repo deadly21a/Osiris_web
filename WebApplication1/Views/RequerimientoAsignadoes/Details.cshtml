@@ -1,0 +1,123 @@
+﻿@model WebApplication1.DataAccess.RequerimientoAsignado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RequerimientoAsignado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_ingreso_requerimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_ingreso_requerimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Solicitante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Requerimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Requerimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_revision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_revision)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario_rev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario_rev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duracion_Hr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duracion_Hr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Ejecutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Ejecutor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario_asig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario_asig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cumplimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cumplimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Publicado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Publicado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_RequerimientoAsignado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

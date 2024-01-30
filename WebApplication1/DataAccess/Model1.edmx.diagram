@@ -21,7 +21,8 @@
         <EntityTypeShape EntityType="OsirisModel.UsuarioRevision" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.Edit_view" Width="2" PointX="6.625" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.VistaIngresoRequerimiento" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OsirisModel.VistaRevisionRequerimiento" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OsirisModel.VistaRevisionRequerimiento" Width="2.125" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OsirisModel.VistaRequerimientoAsignado" Width="1.5" PointX="0.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

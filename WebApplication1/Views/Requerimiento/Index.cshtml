@@ -95,9 +95,9 @@
         </td>
         <td>
 
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID_ingreso_requerimiento })
-            @Html.ActionLink("Details", "Details", new { id = item.ID_ingreso_requerimiento })
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID_ingreso_requerimiento })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_ingreso_requerimiento }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id = item.ID_ingreso_requerimiento}, new { @class = "btn btn-info" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_ingreso_requerimiento }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

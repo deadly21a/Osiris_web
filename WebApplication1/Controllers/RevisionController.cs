@@ -31,17 +31,22 @@ namespace WebApplication1.Controllers
         }
         private OsirisEntities db = new OsirisEntities();
 
-        //public ActionResult Index()
-        //{
-        //    return View(db.RevisionRequerimiento.ToList());
-        //}
-
-        public ActionResult Index1()
+        public ActionResult Index()
         {
             return View(db.VistaRevisionRequerimiento.ToList());
         }
 
-        public ActionResult Json()
+        public ActionResult Index1()
+        {
+
+            // var datareturn = db.VistaRevisionRequerimiento.ToList()
+            // return View(datareturn);
+
+            return View();
+        }
+
+
+        public JsonResult Json()
         {
             List<VistaRevisionRequerimientoViewModel> revisiones = new List<VistaRevisionRequerimientoViewModel>();
 
@@ -85,7 +90,7 @@ namespace WebApplication1.Controllers
                     LEFT JOIN Hardware H ON RR.ID_Hardware = H.ID_Hardware
                     LEFT JOIN UsuarioRevision UR ON RR.ID_Usuario = UR.ID_Usuario
             ";
-            
+
 
             try
             {
@@ -99,23 +104,23 @@ namespace WebApplication1.Controllers
                     {
                         VistaRevisionRequerimientoViewModel revision = new VistaRevisionRequerimientoViewModel
                         {
-                            ID_ingreso_requerimiento = Convert.ToInt32(reader["ID_ingreso_requerimiento"]),
-                            fecha_ingreso = Convert.ToDateTime(reader["fecha_ingreso"]),
-                            Estado = Convert.ToInt32(reader["Estado"]),
-                            Solicitante = Convert.ToInt32(reader["Solicitante"]),
-                            Tipo_requerimiento = Convert.ToInt32(reader["Tipo_requerimiento"]),
-                            Prioridad = Convert.ToInt32(reader["Prioridad"]),
-                            Requerimiento = reader["Requerimiento"].ToString(),
-                            Proyecto = Convert.ToInt32(reader["Proyecto"]),
-                            Aplicacion = Convert.ToInt32(reader["Aplicacion"]),
-                            Opcion = reader["Opcion"].ToString(),
-                            Hardware = Convert.ToInt32(reader["Hardware"]),
-                            Comentario = reader["Comentario"].ToString(),
-                            F_Plazo = Convert.ToDateTime(reader["F_Plazo"]),
-                            F_revision = Convert.ToDateTime(reader["F_revision"]),
-                            Comentario_rev = reader["Comentario_rev"].ToString(),
-                            Duracion_Hr = Convert.ToDecimal(reader["Duracion_Hr"]),
-                            UsuarioRevision = Convert.ToInt32(reader["UsuarioRevision"])
+                            ID_ingreso_requerimiento = reader["ID_ingreso_requerimiento"] != DBNull.Value ? Convert.ToInt32(reader["ID_ingreso_requerimiento"]) : 0,
+                            Estado = reader["Estado"] != DBNull.Value ? Convert.ToInt32(reader["Estado"]) : 0,
+                            fecha_ingreso = reader["fecha_ingreso"] != DBNull.Value ? Convert.ToDateTime(reader["fecha_ingreso"]) : DateTime.MinValue,
+                            Solicitante = reader["Solicitante"] != DBNull.Value ? Convert.ToInt32(reader["Solicitante"]) : 0,
+                            Aplicacion = reader["Aplicacion"] != DBNull.Value ? Convert.ToInt32(reader["Aplicacion"]) : 0,
+                            Hardware = reader["Hardware"] != DBNull.Value ? Convert.ToInt32(reader["Hardware"]) : 0,
+                            Prioridad = reader["Prioridad"] != DBNull.Value ? Convert.ToInt32(reader["Prioridad"]) : 0,
+                            Proyecto = reader["Proyecto"] != DBNull.Value ? Convert.ToInt32(reader["Proyecto"]) : 0,
+                            Tipo_requerimiento = reader["Tipo_requerimiento"] != DBNull.Value ? Convert.ToInt32(reader["Tipo_requerimiento"]) : 0,
+                            Requerimiento = reader["Requerimiento"] != DBNull.Value ? reader["Requerimiento"].ToString() : string.Empty,
+                            Opcion = reader["Opcion"] != DBNull.Value ? reader["Opcion"].ToString() : string.Empty,
+                            Comentario = reader["Comentario"] != DBNull.Value ? reader["Comentario"].ToString() : string.Empty,
+                            F_Plazo = reader["F_Plazo"] != DBNull.Value ? Convert.ToDateTime(reader["F_Plazo"]) : DateTime.MinValue,
+                            Comentario_rev = reader["Comentario_rev"] != DBNull.Value ? reader["Comentario_rev"].ToString() : string.Empty,
+                            Duracion_Hr = reader["Duracion_Hr"] != DBNull.Value ? Convert.ToDecimal(reader["Duracion_Hr"]) : 0,
+                            F_revision = reader["F_revision"] != DBNull.Value ? Convert.ToDateTime(reader["F_revision"]) : DateTime.MinValue,
+                            UsuarioRevision = reader["UsuarioRevision"] != DBNull.Value ? Convert.ToInt32(reader["UsuarioRevision"]) : 0
                         };
 
                         revisiones.Add(revision);
@@ -129,11 +134,18 @@ namespace WebApplication1.Controllers
                 Console.WriteLine("Error de formato al leer datos: " + ex.Message);
             }
 
-            return Json(revisiones, JsonRequestBehavior.AllowGet);
+
+            return Json(new
+            {
+                success = true,
+                message = "",
+                ListaRequerimiento = revisiones.ToList()
+            }, JsonRequestBehavior.AllowGet);
+
         }
 
 
-       
+
 
 
         // GET: RevisionRequerimientoes/Details/5

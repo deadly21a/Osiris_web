@@ -1,0 +1,106 @@
+﻿@model IEnumerable<WebApplication1.DataAccess.VistaRequerimientoAsignado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_ingreso_requerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requerimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_revision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario_rev)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracion_Hr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Ejecutor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario_asig)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cumplimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.F_fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Publicado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_ingreso_requerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Requerimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_revision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario_rev)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracion_Hr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Ejecutor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario_asig)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cumplimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Publicado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RequerimientoAsignado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_RequerimientoAsignado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_RequerimientoAsignado })
+        </td>
+    </tr>
+}
+
+</table>

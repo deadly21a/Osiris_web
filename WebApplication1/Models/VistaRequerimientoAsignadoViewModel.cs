@@ -5,25 +5,20 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class VistaRevisionRequerimientoViewModel
+    public class VistaRequerimientoAsignadoViewModel
     {
-        public int ID_RevisionRequerimiento { get; set; }
         public int ID_ingreso_requerimiento { get; set; }
-        public DateTime fecha_ingreso { get; set; }
+        public DateTime F_inicio { get; set; }
         public int Estado { get; set; }
         public int Solicitante { get; set; }
-        public int Tipo_requerimiento { get; set; }
-        public int Prioridad { get; set; }
         public string Requerimiento { get; set; }
-        public int Proyecto { get; set; }
-        public int Aplicacion { get; set; }
-        public string Opcion { get; set; }
-        public int Hardware { get; set; }
         public string Comentario { get; set; }
-        public DateTime F_Plazo { get; set; }
         public DateTime F_revision { get; set; }
         public string Comentario_rev { get; set; }
         public decimal Duracion_Hr { get; set; }
-        public int UsuarioRevision { get; set; }
+        public int Ejecutor { get; set; }
+        public int Publicado {  get; set; }
+        public string Comentario_asig {  get; set; }
+        public DateTime F_fin {  get; set; }
     }
 }

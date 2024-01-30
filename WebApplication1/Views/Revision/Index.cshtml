@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.DataAccess.RevisionRequerimiento>
+﻿@model IEnumerable<WebApplication1.DataAccess.VistaRevisionRequerimiento>
 
 
 
@@ -18,31 +18,31 @@
             @Html.DisplayNameFor(model => model.ID_ingreso_requerimiento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Estado)
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Solicitante)
+            @Html.DisplayNameFor(model => model.Solicitante)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Tipo_requerimiento)
+            @Html.DisplayNameFor(model => model.TipoRequerimiento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Prioridad)
+            @Html.DisplayNameFor(model => model.Prioridad)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Requerimiento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Proyecto)
+            @Html.DisplayNameFor(model => model.Proyecto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Aplicacion)
+            @Html.DisplayNameFor(model => model.Aplicacion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Opcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Hardware)
+            @Html.DisplayNameFor(model => model.Hardware)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comentario)
@@ -63,7 +63,7 @@
             @Html.DisplayNameFor(model => model.Duracion_Hr)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Ejecutor)
+            @Html.DisplayNameFor(model => model.UsuarioRevision)
         </th>
         <th></th>
     </tr>
@@ -74,31 +74,31 @@
             @Html.DisplayFor(modelItem => item.ID_ingreso_requerimiento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Estado)
+            @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Solicitante)
+            @Html.DisplayFor(modelItem => item.Solicitante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Tipo_requerimiento)
+            @Html.DisplayFor(modelItem => item.TipoRequerimiento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Prioridad)
+            @Html.DisplayFor(modelItem => item.Prioridad)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Requerimiento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Proyecto)
+            @Html.DisplayFor(modelItem => item.Proyecto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Aplicacion)
+            @Html.DisplayFor(modelItem => item.Aplicacion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Opcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Hardware)
+            @Html.DisplayFor(modelItem => item.Hardware)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comentario)
@@ -119,7 +119,7 @@
             @Html.DisplayFor(modelItem => item.Duracion_Hr)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Ejecutor)
+            @Html.DisplayFor(modelItem => item.UsuarioRevision)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID_RevisionRequerimiento }, new {@class = "btn btn-primary"}) |

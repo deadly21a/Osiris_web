@@ -50,10 +50,10 @@
                 <div class="kanban-cards">
                     @foreach (var requerimiento in estado.Value)
                     {
-                        <div class="kanban-card" data-toggle="modal" data-target="#detalleRequerimientoModal">
-                            <h4>@requerimiento.ID</h4>
-                            <p>@requerimiento.Requerimiento</p>
-                        </div>
+                      <div class="kanban-card" data-id="@requerimiento.ID" data-toggle="modal" data-target="#detalleRequerimientoModal">
+                          <h4>@requerimiento.ID</h4>
+                          <p>@requerimiento.Requerimiento</p>
+                      </div>
                     }
                 </div>
             </div>

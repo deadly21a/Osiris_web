@@ -11,7 +11,7 @@ $('.kanban-card').click(function () {
         type: 'GET',
         url: "/Kanban/Kanban1",
         data: {
-            id: 5013
+            id: id
         },
         dataType: 'html'
     }).done(function (response) {
@@ -26,4 +26,3 @@ $('.kanban-card').click(function () {
     });
 
 });
-

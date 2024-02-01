@@ -131,42 +131,24 @@ namespace WebApplication1.Controllers
             base.Dispose(disposing);
         }
 
-        public JsonResult ObtenerDatosAplicacion(int id_Aplicacion)
+
+        public JsonResult ObtenerDatosAplicacion(string term)
         {
             try
             {
-
                 using (OsirisEntities osirisEntities = new OsirisEntities())
                 {
-                    if(id_Aplicacion != 0)
-                    {
-                        var detAplicacion = (from deta in osirisEntities.Aplicacion
-                                            where deta.ID_Aplicacion == id_Aplicacion
-                                            select new
-                                            {
-                                                id = deta.ID_Aplicacion,
-                                                text = deta.TipoAplicacion
-                                            }).ToList();
-                        return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        var detAplicacion = (from deta in osirisEntities.Aplicacion
-                                            
-                                            select new
-                                            {
-                                                id = deta.ID_Aplicacion,
-                                                text = deta.TipoAplicacion
-                                            }).ToList();
-                        return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
-                    }
+                    var detAplicacion = osirisEntities.Aplicacion
+                        .Where(deta => deta.TipoAplicacion.Contains(term))
+                        .Select(deta => new
+                        {
+                            id = deta.ID_Aplicacion,
+                            text = deta.TipoAplicacion
+                        })
+                        .ToList();
 
-
-
-                    
+                    return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -174,48 +156,74 @@ namespace WebApplication1.Controllers
             }
         }
 
-        public JsonResult ObtenerDatosSolicitante(int id_Solicitante)
+
+
+        //public JsonResult ObtenerDatosAplicacion(int id_Aplicacion)
+        //{
+        //    try
+        //    {
+
+        //        using (OsirisEntities osirisEntities = new OsirisEntities())
+        //        {
+        //            if(id_Aplicacion != 0)
+        //            {
+        //                var detAplicacion = (from deta in osirisEntities.Aplicacion
+        //                                    where deta.ID_Aplicacion == id_Aplicacion
+        //                                    select new
+        //                                    {
+        //                                        id = deta.ID_Aplicacion,
+        //                                        text = deta.TipoAplicacion
+        //                                    }).ToList();
+        //                return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
+        //            }
+        //            else
+        //            {
+        //                var detAplicacion = (from deta in osirisEntities.Aplicacion
+
+        //                                    select new
+        //                                    {
+        //                                        id = deta.ID_Aplicacion,
+        //                                        text = deta.TipoAplicacion
+        //                                    }).ToList();
+        //                return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
+        //            }
+
+
+
+
+        //        }
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+        public JsonResult ObtenerDatosSolicitante(string term)
         {
             try
             {
-
                 using (OsirisEntities osirisEntities = new OsirisEntities())
                 {
-                    if (id_Solicitante != 0)
-                    {
-                        var detSolicitante = (from deta in osirisEntities.Solicitante
-                                             where deta.ID_Solicitante == id_Solicitante
-                                             select new
-                                             {
-                                                 id = deta.ID_Solicitante,
-                                                 text = deta.Nombres
-                                             }).ToList();
-                        return Json(new { success = true, items = detSolicitante }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        var detSolicitante = (from deta in osirisEntities.Solicitante
-
-                                             select new
-                                             {
-                                                 id = deta.ID_Solicitante,
-                                                 text = deta.Nombres
-                                             }).ToList();
-                        return Json(new { success = true, items = detSolicitante }, JsonRequestBehavior.AllowGet);
-                    }
-
-
-
-
+                    var detSolicitante = osirisEntities.Solicitante
+                        .Where(deta => deta.Nombres.Contains(term))
+                        .Select(deta => new {
+                            id = deta.ID_Solicitante,
+                            text = deta.Nombres
+                        })
+                        .ToList();
+                    return Json(new { success = true, items = detSolicitante }, JsonRequestBehavior.AllowGet);
                 }
-
-
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
             }
         }
+
+
 
         public JsonResult ObtenerDatosEstado(int id_Estado)
         {
@@ -389,48 +397,73 @@ namespace WebApplication1.Controllers
             }
         }
 
-        public JsonResult ObtenerDatosHardware(int id_Hardware)
+
+
+        public JsonResult ObtenerDatosHardware(string term)
         {
             try
             {
-
                 using (OsirisEntities osirisEntities = new OsirisEntities())
                 {
-                    if (id_Hardware != 0)
-                    {
-                        var detHardware = (from deta in osirisEntities.Hardware
-                                           where deta.ID_Hardware == id_Hardware
-                                           select new
-                                           {
-                                               id = deta.ID_Hardware,
-                                               text = deta.TipoHardware
-                                           }).ToList();
-                        return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        var detHardware = (from deta in osirisEntities.Hardware
+                    var detHardware = osirisEntities.Hardware
+                        .Where(deta => deta.TipoHardware.Contains(term))
+                        .Select(deta => new {
+                            id = deta.ID_Hardware,
+                            text = deta.TipoHardware
+                        })
+                        .ToList();
 
-                                           select new
-                                           {
-                                               id = deta.ID_Hardware,
-                                               text = deta.TipoHardware
-                                           }).ToList();
-                        return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
-                    }
-
-
-
-
+                    return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
                 }
-
-
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        //public JsonResult ObtenerDatosHardware(int id_Hardware)
+        //{
+        //    try
+        //    {
+
+        //        using (OsirisEntities osirisEntities = new OsirisEntities())
+        //        {
+        //            if (id_Hardware != 0)
+        //            {
+        //                var detHardware = (from deta in osirisEntities.Hardware
+        //                                   where deta.ID_Hardware == id_Hardware
+        //                                   select new
+        //                                   {
+        //                                       id = deta.ID_Hardware,
+        //                                       text = deta.TipoHardware
+        //                                   }).ToList();
+        //                return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
+        //            }
+        //            else
+        //            {
+        //                var detHardware = (from deta in osirisEntities.Hardware
+
+        //                                   select new
+        //                                   {
+        //                                       id = deta.ID_Hardware,
+        //                                       text = deta.TipoHardware
+        //                                   }).ToList();
+        //                return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
+        //            }
+
+
+
+
+        //        }
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
 
         [HttpPost]
         public JsonResult BtnEnviarDatos(IngresoRequerimientoViewModel model)

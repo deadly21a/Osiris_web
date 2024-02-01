@@ -51,41 +51,78 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
 
-    IdUsuario
-    
-$('#ID_Usuario').select2({
-        width: '100%', allowClear: true,
-        placeholder: 'Buscar Usuario Revision',
+IdUsuario
+$(document).ready(function () {
+    $('#ID_Usuario').select2({
+        minimumInputLength: 1,
+        width: '100%',
+        allowClear: true,
+        placeholder: 'Buscar Tipo de Usuario',
         ajax: {
             url: '/Revision/ObtenerDatosUsuario',
+            dataType: 'json',
+            delay: 250,
             data: function (params) {
-
-                var id_Usuario= params.term;
-
-                var query = {
-                    ID_Usuario: id_Usuario == null ? 0 : id_Usuario,
-
-                }
-
-                return query;
+                return {
+                    term: params.term || ''
+                };
             },
             processResults: function (data) {
-                // Transforms the top-level key of the response object from 'items' to 'results'
                 return {
-                    results: data.items
+                    results: data.items || []
                 };
             }
-
         }
     });
 
-$('#ID_Usuario').on('select2:select', function (e) {
-    var IdUsuario = e.params.data.id;
-    $('#IdUsuario').val(IdUsuario)
+    $('#ID_Usuario').on('select2:select', function (e) {
+        var IdUsuario = e.params.data.id;
+        $('#IdUsuario').val(IdUsuario)
     });
-$('#ID_Usuario').on('select2:unselect', function (e) {
-    $('#IdUsuario').val(0)
+
+    $('#ID_Usuario').on('select2:unselect', function (e) {
+        $('#IdUsuario').val(0)
     });
+});
+
+
+    
+//$('#ID_Usuario').select2({
+//        width: '100%', allowClear: true,
+//        placeholder: 'Buscar Usuario Revision',
+//        ajax: {
+//            url: '/Revision/ObtenerDatosUsuario',
+//            data: function (params) {
+
+//                var id_Usuario= params.term;
+
+//                var query = {
+//                    ID_Usuario: id_Usuario == null ? 0 : id_Usuario,
+
+//                }
+
+//                return query;
+//            },
+//            processResults: function (data) {
+//                // Transforms the top-level key of the response object from 'items' to 'results'
+//                return {
+//                    results: data.items
+//                };
+//            }
+
+//        }
+//    });
+
+//$('#ID_Usuario').on('select2:select', function (e) {
+//    var IdUsuario = e.params.data.id;
+//    $('#IdUsuario').val(IdUsuario)
+//    });
+//$('#ID_Usuario').on('select2:unselect', function (e) {
+//    $('#IdUsuario').val(0)
+//    });
+
+
+
     $("#BtnCancelar").on("click", function (e) {
         var agree = confirm("¿Realmente deseas eliminar los datos?");
 

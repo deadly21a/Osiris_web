@@ -29,40 +29,75 @@ $("#btnBuscar").on("click", function () {
 
 
 IdEjecutor
-
-$('#ID_Ejecutor').select2({
-    width: '100%', allowClear: true,
-    placeholder: 'Buscar Ejecutor',
-    ajax: {
-        url: '/Asignado/ObtenerDatosEjecutor',
-        data: function (params) {
-
-            var id_Ejecutor = params.term;
-
-            var query = {
-                ID_Ejecutor: id_Ejecutor == null ? 0 : id_Ejecutor,
-
+$(document).ready(function () {
+    $('#ID_Ejecutor').select2({
+        minimumInputLength: 1,
+        width: '100%',
+        allowClear: true,
+        placeholder: 'Buscar Ejecutor',
+        ajax: {
+            url: '/Asignado/ObtenerDatosEjecutor',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    term: params.term || ''
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.items || []
+                };
             }
-
-            return query;
-        },
-        processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
-            return {
-                results: data.items
-            };
         }
+    });
 
-    }
+    $('#ID_Ejecutor').on('select2:select', function (e) {
+        var IdEjecutor = e.params.data.id;
+        $('#IdEjecutor').val(IdEjecutor)
+    });
+
+    $('#ID_Ejecutor').on('select2:unselect', function (e) {
+        $('#IdEjecutor').val(0)
+    });
 });
 
-$('#ID_Ejecutor').on('select2:select', function (e) {
-    var IdEjecutor = e.params.data.id;
-    $('#ID_Ejecutor').val(IdEjecutor)
-});
-$('#ID_Ejecutor').on('select2:unselect', function (e) {
-    $('#IdEjecutor').val(0)
-});
+
+
+
+//$('#ID_Ejecutor').select2({
+//    width: '100%', allowClear: true,
+//    placeholder: 'Buscar Ejecutor',
+//    ajax: {
+//        url: '/Asignado/ObtenerDatosEjecutor',
+//        data: function (params) {
+
+//            var id_Ejecutor = params.term;
+
+//            var query = {
+//                ID_Ejecutor: id_Ejecutor == null ? 0 : id_Ejecutor,
+
+//            }
+
+//            return query;
+//        },
+//        processResults: function (data) {
+//            // Transforms the top-level key of the response object from 'items' to 'results'
+//            return {
+//                results: data.items
+//            };
+//        }
+
+//    }
+//});
+
+//$('#ID_Ejecutor').on('select2:select', function (e) {
+//    var IdEjecutor = e.params.data.id;
+//    $('#ID_Ejecutor').val(IdEjecutor)
+//});
+//$('#ID_Ejecutor').on('select2:unselect', function (e) {
+//    $('#IdEjecutor').val(0)
+//});
 
 
 

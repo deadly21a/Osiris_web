@@ -254,46 +254,22 @@ namespace WebApplication1.Controllers
 
 
 
-
-
-
-
-        public JsonResult ObtenerDatosUsuario(int id_Usuario)
+        public JsonResult ObtenerDatosUsuario(string term)
         {
             try
             {
-
                 using (OsirisEntities osirisEntities = new OsirisEntities())
                 {
-                    if (id_Usuario != 0)
-                    {
-                        var detUusuario = (from deta in osirisEntities.UsuarioRevision
-                                           where deta.ID_Usuario == id_Usuario
-                                           select new
-                                           {
-                                               id = deta.ID_Usuario,
-                                               text = deta.TipoUsuario
-                                           }).ToList();
-                        return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        var detUusuario = (from deta in osirisEntities.UsuarioRevision
+                    var detUsuarios = osirisEntities.UsuarioRevision
+                        .Where(deta => deta.TipoUsuario.Contains(term))
+                        .Select(deta => new {
+                            id = deta.ID_Usuario,
+                            text = deta.TipoUsuario
+                        })
+                        .ToList();
 
-                                           select new
-                                           {
-                                               id = deta.ID_Usuario,
-                                               text = deta.TipoUsuario
-                                           }).ToList();
-                        return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
-                    }
-
-
-
-
+                    return Json(new { success = true, items = detUsuarios }, JsonRequestBehavior.AllowGet);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -302,7 +278,60 @@ namespace WebApplication1.Controllers
         }
 
 
-        
+
+
+
+
+
+
+
+
+
+        //public JsonResult ObtenerDatosUsuario(int id_Usuario)
+        //{
+        //    try
+        //    {
+
+        //        using (OsirisEntities osirisEntities = new OsirisEntities())
+        //        {
+        //            if (id_Usuario != 0)
+        //            {
+        //                var detUusuario = (from deta in osirisEntities.UsuarioRevision
+        //                                   where deta.ID_Usuario == id_Usuario
+        //                                   select new
+        //                                   {
+        //                                       id = deta.ID_Usuario,
+        //                                       text = deta.TipoUsuario
+        //                                   }).ToList();
+        //                return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
+        //            }
+        //            else
+        //            {
+        //                var detUusuario = (from deta in osirisEntities.UsuarioRevision
+
+        //                                   select new
+        //                                   {
+        //                                       id = deta.ID_Usuario,
+        //                                       text = deta.TipoUsuario
+        //                                   }).ToList();
+        //                return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
+        //            }
+
+
+
+
+        //        }
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+
+
         public JsonResult ConsultaRequerimiento(string ID_ingreso_requerimiento)
         {
 

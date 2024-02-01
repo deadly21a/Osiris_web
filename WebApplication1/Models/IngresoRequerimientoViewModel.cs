@@ -16,9 +16,9 @@ namespace WebApplication1.Models
         public int ID_Prioridad { get; set; }
         public string Requerimiento { get; set; }
         public int ID_Proyecto { get; set; }
-        public int ID_Aplicacion { get; set; }
+        public int? ID_Aplicacion { get; set; }
         public string Opcion { get; set; }
-        public int ID_Hardware { get; set; }
+        public int? ID_Hardware { get; set; }
         public string Comentario { get; set; }
         public DateTime F_Plazo { get; set; }
 

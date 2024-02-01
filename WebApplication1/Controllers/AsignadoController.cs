@@ -18,48 +18,77 @@ namespace WebApplication1.Controllers
         }
 
 
-        public JsonResult ObtenerDatosEjecutor(int id_Ejecutor)
+        public JsonResult ObtenerDatosEjecutor(string term)
         {
             try
             {
-
                 using (OsirisEntities osirisEntities = new OsirisEntities())
                 {
-                    if (id_Ejecutor != 0)
-                    {
-                        var detEjecutor = (from deta in osirisEntities.Ejecutor
-                                           where deta.ID_Ejecutor == id_Ejecutor
-                                           select new
-                                           {
-                                               id = deta.ID_Ejecutor,
-                                               text = deta.TipoEjecutor
-                                           }).ToList();
-                        return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        var detEjecutor = (from deta in osirisEntities.Ejecutor
+                    var detEjecutor = osirisEntities.Ejecutor
+                        .Where(deta => deta.TipoEjecutor.Contains(term))
+                        .Select(deta => new{
+                            id = deta.ID_Ejecutor,
+                            text = deta.TipoEjecutor
+                        })
+                        .ToList();
 
-                                           select new
-                                           {
-                                               id = deta.ID_Ejecutor,
-                                               text = deta.TipoEjecutor
-                                           }).ToList();
-                        return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
-                    }
-
-
-
-
+                    return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
                 }
-
-
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+
             }
         }
+
+
+
+
+
+
+                //public JsonResult ObtenerDatosEjecutor(int id_Ejecutor)
+                //{
+                //    try
+                //    {
+
+                //        using (OsirisEntities osirisEntities = new OsirisEntities())
+                //        {
+                //            if (id_Ejecutor != 0)
+                //            {
+                //                var detEjecutor = (from deta in osirisEntities.Ejecutor
+                //                                   where deta.ID_Ejecutor == id_Ejecutor
+                //                                   select new
+                //                                   {
+                //                                       id = deta.ID_Ejecutor,
+                //                                       text = deta.TipoEjecutor
+                //                                   }).ToList();
+                //                return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
+                //            }
+                //            else
+                //            {
+                //                var detEjecutor = (from deta in osirisEntities.Ejecutor
+
+                //                                   select new
+                //                                   {
+                //                                       id = deta.ID_Ejecutor,
+                //                                       text = deta.TipoEjecutor
+                //                                   }).ToList();
+                //                return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
+                //            }
+
+
+
+
+                //        }
+
+
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+                //    }
+                //}
 
 
 
@@ -114,7 +143,7 @@ namespace WebApplication1.Controllers
                 int IdRequerimiento = Int32.Parse(ID_ingreso_requerimiento);
                 using (OsirisEntities db = new OsirisEntities())
                 {
-                    string updateQuery = "UPDATE RevisionRequerimiento SET ID_Estado = 3 WHERE ID_ingreso_requerimiento = @IdRequerimiento";
+                    string updateQuery = "UPDATE ingreso_requerimiento SET ID_Estado = ID_Estado WHERE ID_ingreso_requerimiento = @IdRequerimiento";
                     db.Database.ExecuteSqlCommand(updateQuery, new SqlParameter("@IdRequerimiento", IdRequerimiento));
 
                     var model = db.RevisionRequerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);

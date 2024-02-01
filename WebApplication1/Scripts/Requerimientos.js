@@ -13,39 +13,72 @@
 
 IdAplicacion
 
-$('#ID_Aplicacion').select2({
-    width: '100%', allowClear: true,
-    placeholder: 'Buscar Aplicacion',
-    ajax: {
-        url: '/Requerimiento/ObtenerDatosAplicacion',
-        data: function (params) {
-
-            var id_Aplicacion = params.term;
-
-            var query = {
-                ID_Aplicacion: id_Aplicacion == null ? 0 : id_Aplicacion,
-                
+$(document).ready(function () {
+    $('#ID_Aplicacion').select2({
+        minimumInputLength: 1,
+        width: '100%',
+        allowClear: true,
+        placeholder: 'Buscar Aplicacion',
+        ajax: {
+            url: '/Requerimiento/ObtenerDatosAplicacion',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    term: params.term || ''
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.items || []
+                };
             }
-
-            return query;
-        },
-        processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
-            return {
-                results: data.items
-            };
         }
+    });
 
-    }
+    $('#ID_Aplicacion').on('select2:select', function (e) {
+        var IdAplicacion = e.params.data.id;
+        $('#IdAplicacion').val(IdAplicacion)
+    });
+
+    $('#ID_Aplicacion').on('select2:unselect', function (e) {
+        $('#IdAplicacion').val(0)
+    });
 });
 
-$('#ID_Aplicacion').on('select2:select', function (e) {
-    var IdAplicacion = e.params.data.id;
-    $('#ID_Aplicacion').val(IdAplicacion)
-});
-$('#ID_Aplicacion').on('select2:unselect', function (e) {
-    $('#IdAplicacion').val(0)
-});
+//$('#ID_Aplicacion').select2({
+//    width: '100%', allowClear: true,
+//    placeholder: 'Buscar Aplicacion',
+//    ajax: {
+//        url: '/Requerimiento/ObtenerDatosAplicacion',
+//        data: function (params) {
+
+//            var id_Aplicacion = params.term;
+
+//            var query = {
+//                ID_Aplicacion: id_Aplicacion == null ? 0 : id_Aplicacion,
+                
+//            }
+
+//            return query;
+//        },
+//        processResults: function (data) {
+//            // Transforms the top-level key of the response object from 'items' to 'results'
+//            return {
+//                results: data.items
+//            };
+//        }
+
+//    }
+//});
+
+//$('#ID_Aplicacion').on('select2:select', function (e) {
+//    var IdAplicacion = e.params.data.id;
+//    $('#ID_Aplicacion').val(IdAplicacion)
+//});
+//$('#ID_Aplicacion').on('select2:unselect', function (e) {
+//    $('#IdAplicacion').val(0)
+//});
 
 
 IdEstado
@@ -121,40 +154,76 @@ $('#ID_Tipo_requerimiento').on('select2:unselect', function (e) {
 });
 
 IdSolicitante
-
-$('#ID_Solicitante').select2({
-    width: '100%', allowClear: true,
-    placeholder: 'Buscar Solicitante',
-    ajax: {
-        url: '/Requerimiento/ObtenerDatosSolicitante',
-        data: function (params) {
-
-            var id_Solicitante = params.term;
-
-            var query = {
-                ID_Solicitante: id_Solicitante == null ? 0 : id_Solicitante,
-
+$(document).ready(function () {
+    $('#ID_Solicitante').select2({
+        width: '100%',
+        allowClear: true,
+        placeholder: 'Buscar Solicitante',
+        minimumInputLength: 2, 
+        ajax: {
+            url: '/Requerimiento/ObtenerDatosSolicitante',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    term: params.term || ''
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.items || []
+                };
             }
-
-            return query;
-        },
-        processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
-            return {
-                results: data.items
-            };
         }
+    });
 
-    }
+    $('#ID_Solicitante').on('select2:select', function (e) {
+        var IdSolicitante = e.params.data.id;
+        $('#IdSolicitante').val(IdSolicitante)
+    });
+
+    $('#ID_Solicitante').on('select2:unselect', function (e) {
+        $('#IdSolicitante').val(0)
+    });
 });
 
-$('#ID_Solicitante').on('select2:select', function (e) {
-    var IdSolicitante = e.params.data.id;
-    $('#ID_Solicitante').val(IdSolicitante)
-});
-$('#ID_Solicitante').on('select2:unselect', function (e) {
-    $('#IdSolicitante').val(0)
-});
+
+
+
+
+//$('#ID_Solicitante').select2({
+//    width: '100%', allowClear: true,
+//    placeholder: 'Buscar Solicitante',
+//    ajax: {
+//        url: '/Requerimiento/ObtenerDatosSolicitante',
+//        data: function (params) {
+
+//            var id_Solicitante = params.term;
+
+//            var query = {
+//                ID_Solicitante: id_Solicitante == null ? 0 : id_Solicitante,
+
+//            }
+
+//            return query;
+//        },
+//        processResults: function (data) {
+//            // Transforms the top-level key of the response object from 'items' to 'results'
+//            return {
+//                results: data.items
+//            };
+//        }
+
+//    }
+//});
+
+//$('#ID_Solicitante').on('select2:select', function (e) {
+//    var IdSolicitante = e.params.data.id;
+//    $('#ID_Solicitante').val(IdSolicitante)
+//});
+//$('#ID_Solicitante').on('select2:unselect', function (e) {
+//    $('#IdSolicitante').val(0)
+//});
 
 
 IdPrioridad
@@ -223,39 +292,76 @@ $('#ID_Proyecto').select2({
 
 IdHardware
 
-$('#ID_Hardware').select2({
-    width: '100%', allowClear: true,
-    placeholder: 'Buscar Hardware',
-    ajax: {
-        url: '/Requerimiento/ObtenerDatosHardware',
-        data: function (params) {
-
-            var id_Hardware = params.term;
-
-            var query = {
-                ID_Hardware: id_Hardware == null ? 0 : id_Hardware,
-
+$(document).ready(function () {
+    $('#ID_Hardware').select2({
+        minimumInputLength: 1,
+        width: '100%',
+        allowClear: true,
+        placeholder: 'Buscar Tipo de Hardware',
+        ajax: {
+            url: '/Requerimiento/ObtenerDatosHardware',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    term: params.term || ''
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.items || []
+                };
             }
-
-            return query;
-        },
-        processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
-            return {
-                results: data.items
-            };
         }
+    });
 
-    }
+    $('#ID_Hardware').on('select2:select', function (e) {
+        var IdHardware = e.params.data.id;
+        $('#IdHardware').val(IdHardware)
+    });
+
+    $('#ID_Hardware').on('select2:unselect', function (e) {
+        $('#IdHardware').val(0)
+    });
 });
 
-$('#ID_Hardware').on('select2:select', function (e) {
-    var IdHardware = e.params.data.id;
-    $('#IdHardware').val(IdHardware)
-});
-$('#ID_Hardware').on('select2:unselect', function (e) {
-    $('#IdHardware').val(0)
-});
+
+
+
+
+//$('#ID_Hardware').select2({
+//    width: '100%', allowClear: true,
+//    placeholder: 'Buscar Hardware',
+//    ajax: {
+//        url: '/Requerimiento/ObtenerDatosHardware',
+//        data: function (params) {
+
+//            var id_Hardware = params.term;
+
+//            var query = {
+//                ID_Hardware: id_Hardware == null ? 0 : id_Hardware,
+
+//            }
+
+//            return query;
+//        },
+//        processResults: function (data) {
+//            // Transforms the top-level key of the response object from 'items' to 'results'
+//            return {
+//                results: data.items
+//            };
+//        }
+
+//    }
+//});
+
+//$('#ID_Hardware').on('select2:select', function (e) {
+//    var IdHardware = e.params.data.id;
+//    $('#IdHardware').val(IdHardware)
+//});
+//$('#ID_Hardware').on('select2:unselect', function (e) {
+//    $('#IdHardware').val(0)
+//});
 
  $("#BtnCancelar").on("click", function (e) {
         var agree = confirm("¿Realmente deseas eliminar los datos?");

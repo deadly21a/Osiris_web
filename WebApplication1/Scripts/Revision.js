@@ -57,7 +57,7 @@ $(document).ready(function () {
         minimumInputLength: 1,
         width: '100%',
         allowClear: true,
-        placeholder: 'Buscar Tipo de Usuario',
+        placeholder: 'Buscar Usuario Revision',
         ajax: {
             url: '/Revision/ObtenerDatosUsuario',
             dataType: 'json',

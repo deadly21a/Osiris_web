@@ -1,10 +1,5 @@
 ﻿@model IEnumerable<WebApplication1.DataAccess.VistaRequerimientoAsignado>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Detalles De Asignacion De Requerimiento</h2>
 
 <p>
@@ -81,8 +76,11 @@
             @Html.DisplayFor(modelItem => item.Comentario_asig)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Cumplimiento)
+            <progress value="@item.Cumplimiento" max="100" style="width: 100%; background-color: #605ca8;"></progress>
+            <span>@item.Cumplimiento%</span>
         </td>
+
+
         <td>
             @Html.DisplayFor(modelItem => item.F_inicio)
         </td>
@@ -96,11 +94,12 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_RequerimientoAsignado }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_RequerimientoAsignado }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID_RequerimientoAsignado }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_RequerimientoAsignado }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
-
+    
 </table>
+<link href="~/Content/barra.css" rel="stylesheet" />

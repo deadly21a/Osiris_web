@@ -1,0 +1,59 @@
+﻿@model WebApplication1.Models.LoginViewModel
+
+
+
+@{
+    ViewBag.Title = "Inicio de Sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/img/osirisl.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/Content/login.css"> 
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="login100-form-logo">
+                        <img src="/img/osirisl.jpg" alt="Logo" class="circular-logo">
+                    </div>
+
+                    <span class="login100-form-title p-b-37 p-t-10">
+                        Osiris
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                      
+                        @Html.TextBoxFor(m => m.CCiUsuario, new { @class = "input100", placeholder = "Username" })
+
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        
+                        @Html.PasswordFor(m => m.CTxClave, new { @class = "input100", placeholder = "Password" })
+
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

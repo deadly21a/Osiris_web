@@ -163,14 +163,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AplicacionsController.cs" />
     <Compile Include="Controllers\AsignadoController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\EjecutorsController.cs" />
     <Compile Include="Controllers\HardwaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KanbanController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RequerimientoAsignadoesController.cs" />
     <Compile Include="Controllers\RequerimientoController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
@@ -210,6 +210,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\Model2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Model2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Prioridad.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -237,11 +252,17 @@
     <Compile Include="DataAccess\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\tblAdUsuario.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Tipo_requerimiento.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\UsuarioRevision.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\View_Rh_Cargos.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\VistaIngresoRequerimiento.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -252,13 +273,25 @@
     <Compile Include="DataAccess\VistaRevisionRequerimiento.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\ZPLA_DETA_GENTIX_EMPLEADOS.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\ZPLA_DETA_OPCIONES.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\ZPLA_VIEW_GENITX_AREA_DPTO.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\ZPLA_VIEW_USUARIOS.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AsignacionRequerimientoViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IngresoRequerimientoViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RequerimientoViewModel.cs" />
     <Compile Include="Models\RevisionRequerimientoViewModel.cs" />
@@ -269,6 +302,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\barra.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -339,6 +373,7 @@
     <Content Include="Content\dist\js\pages\dashboard2.js" />
     <Content Include="Content\dist\js\pages\dashboard3.js" />
     <Content Include="Content\EstiloTabla.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -2218,6 +2253,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="DataAccess\Model2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccess\Model2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2370,6 +2415,13 @@
     <Content Include="DataAccess\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="DataAccess\Model2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccess\Model2.edmx.diagram">
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -2400,26 +2452,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Requerimiento\IngresoRequerimiento.cshtml" />
     <Content Include="Views\Revision\RevisionRequerimiento.cshtml" />
     <Content Include="Views\Solicitantes\Create.cshtml" />
@@ -2472,11 +2504,13 @@
     <Content Include="Views\RevisionRequerimientoes\Index.cshtml" />
     <Content Include="Views\Kanban\Kanban.cshtml" />
     <Content Include="Views\Partial\Kanban\_DetKanban.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\plugins\datatables-rowreorder\css\" />
     <Folder Include="Content\plugins\datatables-rowreorder\js\" />
+    <Folder Include="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PrometeoAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAdUsuario">
+          <Key>
+            <PropertyRef Name="CCiUsuario" />
+          </Key>
+          <Property Name="CCiUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CCiDocumento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CDsNombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CDsApellido" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CSNPerfil" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CSNAccesoAdm" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CCiDepartamento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CDsDepartamento" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="CCiCargo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CDsCargo" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="CTxClave" Type="varchar" MaxLength="254" />
+          <Property Name="CTxEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CCeUsuario" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CCtUsuario" Type="char" MaxLength="1" />
+          <Property Name="CCiDominio" Type="varchar" MaxLength="40" />
+          <Property Name="CCiUsuarioDominio" Type="varchar" MaxLength="40" />
+          <Property Name="CCiRol" Type="varchar" MaxLength="40" />
+          <Property Name="CSNPideClave" Type="char" MaxLength="1" />
+          <Property Name="CSnUserSAP" Type="char" MaxLength="1" />
+          <Property Name="CCiUserSAP" Type="char" MaxLength="50" />
+          <Property Name="CTxClaveSAP" Type="varchar" MaxLength="254" />
+          <Property Name="CCiUsuarioIngreso" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CDsEstacionIngreso" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DFiIngreso" Type="datetime" Nullable="false" />
+          <Property Name="CCiUsuarioModifica" Type="varchar" MaxLength="20" />
+          <Property Name="CDsEstacionModifica" Type="varchar" MaxLength="20" />
+          <Property Name="DFmModifica" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PrometeoAdmin.dbo.View_Rh_Cargos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_Rh_Cargos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CargCod" Type="varchar" MaxLength="12" />
+          <Property Name="CargNom" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'PrometeoAdmin.dbo.viewFechaHoy' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="viewFechaHoy">
+          <Property Name="NNuAnio" Type="nvarchar" MaxLength="30" />
+          <Property Name="NNuMes" Type="nvarchar" MaxLength="30" />
+          <Property Name="NNuCTxDia" Type="nvarchar" MaxLength="30" />
+          <Property Name="NNuDia" Type="nvarchar" MaxLength="30" />
+          <Property Name="NNuDiaAnio" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mes" Type="nvarchar" MaxLength="30" />
+          <Property Name="CTxFecha" Type="nvarchar" MaxLength="130" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PrometeoAdmin.dbo.ZPLA_DETA_GENTIX_EMPLEADOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ZPLA_DETA_GENTIX_EMPLEADOS">
+          <Key>
+            <PropertyRef Name="CtrNro" />
+            <PropertyRef Name="PrsCod" />
+            <PropertyRef Name="CtrEstado" />
+          </Key>
+          <Property Name="CtrNro" Type="int" Nullable="false" />
+          <Property Name="PrsCod" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="CtrGprCod" Type="char" MaxLength="10" />
+          <Property Name="CtrDgprCod" Type="char" MaxLength="10" />
+          <Property Name="CDsNombresEmpleado" Type="varchar" MaxLength="31" />
+          <Property Name="CDsApellidosEmpleado" Type="varchar" MaxLength="31" />
+          <Property Name="CDsEmpleado" Type="varchar" MaxLength="63" />
+          <Property Name="PrsPriNombre" Type="varchar" MaxLength="15" />
+          <Property Name="PrsSegNombre" Type="varchar" MaxLength="15" />
+          <Property Name="PrsPatApellido" Type="varchar" MaxLength="15" />
+          <Property Name="PrsMatApellido" Type="varchar" MaxLength="15" />
+          <Property Name="CtrCargCod" Type="int" />
+          <Property Name="CargNom" Type="char" MaxLength="50" />
+          <Property Name="CtrEstado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CCiArea" Type="char" MaxLength="10" />
+          <Property Name="CDsArea" Type="char" MaxLength="30" />
+          <Property Name="CCiDpto" Type="char" MaxLength="10" />
+          <Property Name="CDsDpto" Type="char" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PrometeoAdmin.dbo.ZPLA_DETA_OPCIONES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ZPLA_DETA_OPCIONES">
+          <Key>
+            <PropertyRef Name="CCiAplicacion" />
+            <PropertyRef Name="CDsAplicacion" />
+            <PropertyRef Name="NNuIdFuncion" />
+            <PropertyRef Name="CCiFuncion" />
+            <PropertyRef Name="CDsFuncion" />
+            <PropertyRef Name="NNuIdOpcion" />
+            <PropertyRef Name="CDsOpcionMenu" />
+            <PropertyRef Name="CDsOpcionPadre" />
+            <PropertyRef Name="NNuNivel" />
+            <PropertyRef Name="NNuPosicion" />
+            <PropertyRef Name="NNuIdOpcionPadre" />
+            <PropertyRef Name="CSNUltimoNivel" />
+            <PropertyRef Name="CSNSeparador" />
+          </Key>
+          <Property Name="CCiAplicacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CDsAplicacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NNuIdFuncion" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CCiFuncion" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CDsFuncion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NNuIdOpcion" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CDsOpcionMenu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CDsOpcionPadre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NNuNivel" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="CDsNivel" Type="varchar" MaxLength="47" />
+          <Property Name="NNuPosicion" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NNuIdOpcionPadre" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CSNUltimoNivel" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CSNSeparador" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CCtClase" Type="char" MaxLength="1" />
+          <Property Name="CDsArchivo" Type="varchar" MaxLength="50" />
+          <Property Name="CDsController" Type="varchar" MaxLength="50" />
+          <Property Name="CDsEventoController" Type="varchar" MaxLength="50" />
+          <Property Name="CDsImagen" Type="varchar" MaxLength="50" />
+          <Property Name="CDsArgumento" Type="varchar" MaxLength="50" />
+          <Property Name="cciAplicacionOrigen" Type="varchar" MaxLength="5" />
+          <Property Name="CSNOcultaOpcion" Type="char" MaxLength="1" />
+          <Property Name="CSNGrupo" Type="char" MaxLength="1" />
+          <Property Name="CDsAbreviaturaMenu" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PrometeoAdmin.dbo.ZPLA_VIEW_GENITX_AREA_DPTO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ZPLA_VIEW_GENITX_AREA_DPTO">
+          <Key>
+            <PropertyRef Name="empcod" />
+            <PropertyRef Name="GprCod" />
+            <PropertyRef Name="DgprCod" />
+          </Key>
+          <Property Name="empcod" Type="smallint" Nullable="false" />
+          <Property Name="GprCod" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="GprCtaCod" Type="char" MaxLength="2" />
+          <Property Name="GprDsc" Type="char" MaxLength="30" />
+          <Property Name="GprEstado" Type="char" MaxLength="1" />
+          <Property Name="GprCorreos" Type="varchar" MaxLength="200" />
+          <Property Name="DgprCod" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="DgprCtaCod" Type="char" MaxLength="10" />
+          <Property Name="DgprDsc" Type="char" MaxLength="50" />
+          <Property Name="GctaCod" Type="char" MaxLength="3" />
+          <Property Name="SgrpCtaCod" Type="char" MaxLength="3" />
+          <Property Name="DgprCorreo" Type="varchar" MaxLength="200" />
+          <Property Name="DgprCC" Type="char" MaxLength="20" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PrometeoAdmin.dbo.ZPLA_VIEW_USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ZPLA_VIEW_USUARIOS">
+          <Key>
+            <PropertyRef Name="CSNPerfil" />
+            <PropertyRef Name="CSNAccesoAdm" />
+            <PropertyRef Name="CTxEmail" />
+            <PropertyRef Name="CCeUsuario" />
+          </Key>
+          <Property Name="CCiUsuario" Type="varchar" MaxLength="20" />
+          <Property Name="CCiDocumento" Type="varchar" MaxLength="20" />
+          <Property Name="CDsNombre" Type="varchar" MaxLength="31" />
+          <Property Name="CDsApellido" Type="varchar" MaxLength="31" />
+          <Property Name="CSNPerfil" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CSNAccesoAdm" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CCiDepartamento" Type="varchar" MaxLength="50" />
+          <Property Name="CDsDepartamento" Type="varchar" MaxLength="254" />
+          <Property Name="CCiCargo" Type="int" />
+          <Property Name="CDsCargo" Type="varchar" MaxLength="254" />
+          <Property Name="CTxClave" Type="varchar" MaxLength="254" />
+          <Property Name="CTxEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CCeUsuario" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CCtUsuario" Type="varchar" MaxLength="1" />
+          <Property Name="CCiDominio" Type="varchar" MaxLength="40" />
+          <Property Name="CCiUsuarioDominio" Type="varchar" MaxLength="40" />
+          <Property Name="CCiRol" Type="varchar" MaxLength="40" />
+          <Property Name="CSNPideClave" Type="varchar" MaxLength="1" />
+          <Property Name="CSnUserSAP" Type="varchar" MaxLength="1" />
+          <Property Name="CCiUserSAP" Type="varchar" MaxLength="50" />
+          <Property Name="CTxClaveSAP" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <EntityContainer Name="PrometeoAdminModelStoreContainer">
+          <EntitySet Name="tblAdUsuario" EntityType="Self.tblAdUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Rh_Cargos" EntityType="Self.View_Rh_Cargos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Rh_Cargos].[Id] AS [Id], 
+    [View_Rh_Cargos].[CargCod] AS [CargCod], 
+    [View_Rh_Cargos].[CargNom] AS [CargNom]
+    FROM [dbo].[View_Rh_Cargos] AS [View_Rh_Cargos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZPLA_DETA_GENTIX_EMPLEADOS" EntityType="Self.ZPLA_DETA_GENTIX_EMPLEADOS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CtrNro] AS [CtrNro], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[PrsCod] AS [PrsCod], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CtrGprCod] AS [CtrGprCod], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CtrDgprCod] AS [CtrDgprCod], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CDsNombresEmpleado] AS [CDsNombresEmpleado], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CDsApellidosEmpleado] AS [CDsApellidosEmpleado], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CDsEmpleado] AS [CDsEmpleado], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[PrsPriNombre] AS [PrsPriNombre], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[PrsSegNombre] AS [PrsSegNombre], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[PrsPatApellido] AS [PrsPatApellido], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[PrsMatApellido] AS [PrsMatApellido], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CtrCargCod] AS [CtrCargCod], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CargNom] AS [CargNom], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CtrEstado] AS [CtrEstado], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CCiArea] AS [CCiArea], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CDsArea] AS [CDsArea], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CCiDpto] AS [CCiDpto], 
+    [ZPLA_DETA_GENTIX_EMPLEADOS].[CDsDpto] AS [CDsDpto]
+    FROM [dbo].[ZPLA_DETA_GENTIX_EMPLEADOS] AS [ZPLA_DETA_GENTIX_EMPLEADOS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZPLA_DETA_OPCIONES" EntityType="Self.ZPLA_DETA_OPCIONES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZPLA_DETA_OPCIONES].[CCiAplicacion] AS [CCiAplicacion], 
+    [ZPLA_DETA_OPCIONES].[CDsAplicacion] AS [CDsAplicacion], 
+    [ZPLA_DETA_OPCIONES].[NNuIdFuncion] AS [NNuIdFuncion], 
+    [ZPLA_DETA_OPCIONES].[CCiFuncion] AS [CCiFuncion], 
+    [ZPLA_DETA_OPCIONES].[CDsFuncion] AS [CDsFuncion], 
+    [ZPLA_DETA_OPCIONES].[NNuIdOpcion] AS [NNuIdOpcion], 
+    [ZPLA_DETA_OPCIONES].[CDsOpcionMenu] AS [CDsOpcionMenu], 
+    [ZPLA_DETA_OPCIONES].[CDsOpcionPadre] AS [CDsOpcionPadre], 
+    [ZPLA_DETA_OPCIONES].[NNuNivel] AS [NNuNivel], 
+    [ZPLA_DETA_OPCIONES].[CDsNivel] AS [CDsNivel], 
+    [ZPLA_DETA_OPCIONES].[NNuPosicion] AS [NNuPosicion], 
+    [ZPLA_DETA_OPCIONES].[NNuIdOpcionPadre] AS [NNuIdOpcionPadre], 
+    [ZPLA_DETA_OPCIONES].[CSNUltimoNivel] AS [CSNUltimoNivel], 
+    [ZPLA_DETA_OPCIONES].[CSNSeparador] AS [CSNSeparador], 
+    [ZPLA_DETA_OPCIONES].[CCtClase] AS [CCtClase], 
+    [ZPLA_DETA_OPCIONES].[CDsArchivo] AS [CDsArchivo], 
+    [ZPLA_DETA_OPCIONES].[CDsController] AS [CDsController], 
+    [ZPLA_DETA_OPCIONES].[CDsEventoController] AS [CDsEventoController], 
+    [ZPLA_DETA_OPCIONES].[CDsImagen] AS [CDsImagen], 
+    [ZPLA_DETA_OPCIONES].[CDsArgumento] AS [CDsArgumento], 
+    [ZPLA_DETA_OPCIONES].[cciAplicacionOrigen] AS [cciAplicacionOrigen], 
+    [ZPLA_DETA_OPCIONES].[CSNOcultaOpcion] AS [CSNOcultaOpcion], 
+    [ZPLA_DETA_OPCIONES].[CSNGrupo] AS [CSNGrupo], 
+    [ZPLA_DETA_OPCIONES].[CDsAbreviaturaMenu] AS [CDsAbreviaturaMenu]
+    FROM [dbo].[ZPLA_DETA_OPCIONES] AS [ZPLA_DETA_OPCIONES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZPLA_VIEW_GENITX_AREA_DPTO" EntityType="Self.ZPLA_VIEW_GENITX_AREA_DPTO" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[empcod] AS [empcod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GprCod] AS [GprCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GprCtaCod] AS [GprCtaCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GprDsc] AS [GprDsc], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GprEstado] AS [GprEstado], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GprCorreos] AS [GprCorreos], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[DgprCod] AS [DgprCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[DgprCtaCod] AS [DgprCtaCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[DgprDsc] AS [DgprDsc], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[GctaCod] AS [GctaCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[SgrpCtaCod] AS [SgrpCtaCod], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[DgprCorreo] AS [DgprCorreo], 
+    [ZPLA_VIEW_GENITX_AREA_DPTO].[DgprCC] AS [DgprCC]
+    FROM [dbo].[ZPLA_VIEW_GENITX_AREA_DPTO] AS [ZPLA_VIEW_GENITX_AREA_DPTO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZPLA_VIEW_USUARIOS" EntityType="Self.ZPLA_VIEW_USUARIOS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZPLA_VIEW_USUARIOS].[CCiUsuario] AS [CCiUsuario], 
+    [ZPLA_VIEW_USUARIOS].[CCiDocumento] AS [CCiDocumento], 
+    [ZPLA_VIEW_USUARIOS].[CDsNombre] AS [CDsNombre], 
+    [ZPLA_VIEW_USUARIOS].[CDsApellido] AS [CDsApellido], 
+    [ZPLA_VIEW_USUARIOS].[CSNPerfil] AS [CSNPerfil], 
+    [ZPLA_VIEW_USUARIOS].[CSNAccesoAdm] AS [CSNAccesoAdm], 
+    [ZPLA_VIEW_USUARIOS].[CCiDepartamento] AS [CCiDepartamento], 
+    [ZPLA_VIEW_USUARIOS].[CDsDepartamento] AS [CDsDepartamento], 
+    [ZPLA_VIEW_USUARIOS].[CCiCargo] AS [CCiCargo], 
+    [ZPLA_VIEW_USUARIOS].[CDsCargo] AS [CDsCargo], 
+    [ZPLA_VIEW_USUARIOS].[CTxClave] AS [CTxClave], 
+    [ZPLA_VIEW_USUARIOS].[CTxEmail] AS [CTxEmail], 
+    [ZPLA_VIEW_USUARIOS].[CCeUsuario] AS [CCeUsuario], 
+    [ZPLA_VIEW_USUARIOS].[CCtUsuario] AS [CCtUsuario], 
+    [ZPLA_VIEW_USUARIOS].[CCiDominio] AS [CCiDominio], 
+    [ZPLA_VIEW_USUARIOS].[CCiUsuarioDominio] AS [CCiUsuarioDominio], 
+    [ZPLA_VIEW_USUARIOS].[CCiRol] AS [CCiRol], 
+    [ZPLA_VIEW_USUARIOS].[CSNPideClave] AS [CSNPideClave], 
+    [ZPLA_VIEW_USUARIOS].[CSnUserSAP] AS [CSnUserSAP], 
+    [ZPLA_VIEW_USUARIOS].[CCiUserSAP] AS [CCiUserSAP], 
+    [ZPLA_VIEW_USUARIOS].[CTxClaveSAP] AS [CTxClaveSAP]
+    FROM [dbo].[ZPLA_VIEW_USUARIOS] AS [ZPLA_VIEW_USUARIOS]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrometeoAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAdUsuario">
+          <Key>
+            <PropertyRef Name="CCiUsuario" />
+          </Key>
+          <Property Name="CCiUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCiDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsApellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CSNPerfil" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CSNAccesoAdm" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CCiDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsDepartamento" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCiCargo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsCargo" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CTxClave" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="CTxEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCeUsuario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CCtUsuario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CCiDominio" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CCiUsuarioDominio" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CCiRol" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CSNPideClave" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CSnUserSAP" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CCiUserSAP" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="CTxClaveSAP" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="CCiUsuarioIngreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsEstacionIngreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DFiIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CCiUsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CDsEstacionModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DFmModifica" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="View_Rh_Cargos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CargCod" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CargNom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZPLA_DETA_GENTIX_EMPLEADOS">
+          <Key>
+            <PropertyRef Name="CtrNro" />
+            <PropertyRef Name="PrsCod" />
+            <PropertyRef Name="CtrEstado" />
+          </Key>
+          <Property Name="CtrNro" Type="Int32" Nullable="false" />
+          <Property Name="PrsCod" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CtrGprCod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CtrDgprCod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CDsNombresEmpleado" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="CDsApellidosEmpleado" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="CDsEmpleado" Type="String" MaxLength="63" FixedLength="false" Unicode="false" />
+          <Property Name="PrsPriNombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PrsSegNombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PrsPatApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PrsMatApellido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CtrCargCod" Type="Int32" />
+          <Property Name="CargNom" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="CtrEstado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CCiArea" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CDsArea" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="CCiDpto" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CDsDpto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZPLA_DETA_OPCIONES">
+          <Key>
+            <PropertyRef Name="CCiAplicacion" />
+            <PropertyRef Name="CDsAplicacion" />
+            <PropertyRef Name="NNuIdFuncion" />
+            <PropertyRef Name="CCiFuncion" />
+            <PropertyRef Name="CDsFuncion" />
+            <PropertyRef Name="NNuIdOpcion" />
+            <PropertyRef Name="CDsOpcionMenu" />
+            <PropertyRef Name="CDsOpcionPadre" />
+            <PropertyRef Name="NNuNivel" />
+            <PropertyRef Name="NNuPosicion" />
+            <PropertyRef Name="NNuIdOpcionPadre" />
+            <PropertyRef Name="CSNUltimoNivel" />
+            <PropertyRef Name="CSNSeparador" />
+          </Key>
+          <Property Name="CCiAplicacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsAplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NNuIdFuncion" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CCiFuncion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsFuncion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NNuIdOpcion" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CDsOpcionMenu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDsOpcionPadre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NNuNivel" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="CDsNivel" Type="String" MaxLength="47" FixedLength="false" Unicode="false" />
+          <Property Name="NNuPosicion" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NNuIdOpcionPadre" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CSNUltimoNivel" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CSNSeparador" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CCtClase" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CDsArchivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDsController" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDsEventoController" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDsImagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDsArgumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cciAplicacionOrigen" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CSNOcultaOpcion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CSNGrupo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CDsAbreviaturaMenu" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZPLA_VIEW_GENITX_AREA_DPTO">
+          <Key>
+            <PropertyRef Name="empcod" />
+            <PropertyRef Name="GprCod" />
+            <PropertyRef Name="DgprCod" />
+          </Key>
+          <Property Name="empcod" Type="Int16" Nullable="false" />
+          <Property Name="GprCod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GprCtaCod" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="GprDsc" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="GprEstado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="GprCorreos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DgprCod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DgprCtaCod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DgprDsc" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="GctaCod" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="SgrpCtaCod" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="DgprCorreo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DgprCC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZPLA_VIEW_USUARIOS">
+          <Key>
+            <PropertyRef Name="CSNPerfil" />
+            <PropertyRef Name="CSNAccesoAdm" />
+            <PropertyRef Name="CTxEmail" />
+            <PropertyRef Name="CCeUsuario" />
+          </Key>
+          <Property Name="CCiUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CCiDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CDsNombre" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="CDsApellido" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="CSNPerfil" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CSNAccesoAdm" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCiDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDsDepartamento" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="CCiCargo" Type="Int32" />
+          <Property Name="CDsCargo" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="CTxClave" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="CTxEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCeUsuario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CCtUsuario" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CCiDominio" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CCiUsuarioDominio" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CCiRol" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CSNPideClave" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CSnUserSAP" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CCiUserSAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CTxClaveSAP" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PrometeoAdminEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAdUsuario" EntityType="Self.tblAdUsuario" />
+          <EntitySet Name="View_Rh_Cargos" EntityType="Self.View_Rh_Cargos" />
+          <EntitySet Name="ZPLA_DETA_GENTIX_EMPLEADOS" EntityType="Self.ZPLA_DETA_GENTIX_EMPLEADOS" />
+          <EntitySet Name="ZPLA_DETA_OPCIONES" EntityType="Self.ZPLA_DETA_OPCIONES" />
+          <EntitySet Name="ZPLA_VIEW_GENITX_AREA_DPTO" EntityType="Self.ZPLA_VIEW_GENITX_AREA_DPTO" />
+          <EntitySet Name="ZPLA_VIEW_USUARIOS" EntityType="Self.ZPLA_VIEW_USUARIOS" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrometeoAdminModelStoreContainer" CdmEntityContainer="PrometeoAdminEntities">
+          <EntitySetMapping Name="tblAdUsuario">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.tblAdUsuario">
+              <MappingFragment StoreEntitySet="tblAdUsuario">
+                <ScalarProperty Name="CCiUsuario" ColumnName="CCiUsuario" />
+                <ScalarProperty Name="CCiDocumento" ColumnName="CCiDocumento" />
+                <ScalarProperty Name="CDsNombre" ColumnName="CDsNombre" />
+                <ScalarProperty Name="CDsApellido" ColumnName="CDsApellido" />
+                <ScalarProperty Name="CSNPerfil" ColumnName="CSNPerfil" />
+                <ScalarProperty Name="CSNAccesoAdm" ColumnName="CSNAccesoAdm" />
+                <ScalarProperty Name="CCiDepartamento" ColumnName="CCiDepartamento" />
+                <ScalarProperty Name="CDsDepartamento" ColumnName="CDsDepartamento" />
+                <ScalarProperty Name="CCiCargo" ColumnName="CCiCargo" />
+                <ScalarProperty Name="CDsCargo" ColumnName="CDsCargo" />
+                <ScalarProperty Name="CTxClave" ColumnName="CTxClave" />
+                <ScalarProperty Name="CTxEmail" ColumnName="CTxEmail" />
+                <ScalarProperty Name="CCeUsuario" ColumnName="CCeUsuario" />
+                <ScalarProperty Name="CCtUsuario" ColumnName="CCtUsuario" />
+                <ScalarProperty Name="CCiDominio" ColumnName="CCiDominio" />
+                <ScalarProperty Name="CCiUsuarioDominio" ColumnName="CCiUsuarioDominio" />
+                <ScalarProperty Name="CCiRol" ColumnName="CCiRol" />
+                <ScalarProperty Name="CSNPideClave" ColumnName="CSNPideClave" />
+                <ScalarProperty Name="CSnUserSAP" ColumnName="CSnUserSAP" />
+                <ScalarProperty Name="CCiUserSAP" ColumnName="CCiUserSAP" />
+                <ScalarProperty Name="CTxClaveSAP" ColumnName="CTxClaveSAP" />
+                <ScalarProperty Name="CCiUsuarioIngreso" ColumnName="CCiUsuarioIngreso" />
+                <ScalarProperty Name="CDsEstacionIngreso" ColumnName="CDsEstacionIngreso" />
+                <ScalarProperty Name="DFiIngreso" ColumnName="DFiIngreso" />
+                <ScalarProperty Name="CCiUsuarioModifica" ColumnName="CCiUsuarioModifica" />
+                <ScalarProperty Name="CDsEstacionModifica" ColumnName="CDsEstacionModifica" />
+                <ScalarProperty Name="DFmModifica" ColumnName="DFmModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Rh_Cargos">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.View_Rh_Cargos">
+              <MappingFragment StoreEntitySet="View_Rh_Cargos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CargCod" ColumnName="CargCod" />
+                <ScalarProperty Name="CargNom" ColumnName="CargNom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZPLA_DETA_GENTIX_EMPLEADOS">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.ZPLA_DETA_GENTIX_EMPLEADOS">
+              <MappingFragment StoreEntitySet="ZPLA_DETA_GENTIX_EMPLEADOS">
+                <ScalarProperty Name="CtrNro" ColumnName="CtrNro" />
+                <ScalarProperty Name="PrsCod" ColumnName="PrsCod" />
+                <ScalarProperty Name="CtrGprCod" ColumnName="CtrGprCod" />
+                <ScalarProperty Name="CtrDgprCod" ColumnName="CtrDgprCod" />
+                <ScalarProperty Name="CDsNombresEmpleado" ColumnName="CDsNombresEmpleado" />
+                <ScalarProperty Name="CDsApellidosEmpleado" ColumnName="CDsApellidosEmpleado" />
+                <ScalarProperty Name="CDsEmpleado" ColumnName="CDsEmpleado" />
+                <ScalarProperty Name="PrsPriNombre" ColumnName="PrsPriNombre" />
+                <ScalarProperty Name="PrsSegNombre" ColumnName="PrsSegNombre" />
+                <ScalarProperty Name="PrsPatApellido" ColumnName="PrsPatApellido" />
+                <ScalarProperty Name="PrsMatApellido" ColumnName="PrsMatApellido" />
+                <ScalarProperty Name="CtrCargCod" ColumnName="CtrCargCod" />
+                <ScalarProperty Name="CargNom" ColumnName="CargNom" />
+                <ScalarProperty Name="CtrEstado" ColumnName="CtrEstado" />
+                <ScalarProperty Name="CCiArea" ColumnName="CCiArea" />
+                <ScalarProperty Name="CDsArea" ColumnName="CDsArea" />
+                <ScalarProperty Name="CCiDpto" ColumnName="CCiDpto" />
+                <ScalarProperty Name="CDsDpto" ColumnName="CDsDpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZPLA_DETA_OPCIONES">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.ZPLA_DETA_OPCIONES">
+              <MappingFragment StoreEntitySet="ZPLA_DETA_OPCIONES">
+                <ScalarProperty Name="CCiAplicacion" ColumnName="CCiAplicacion" />
+                <ScalarProperty Name="CDsAplicacion" ColumnName="CDsAplicacion" />
+                <ScalarProperty Name="NNuIdFuncion" ColumnName="NNuIdFuncion" />
+                <ScalarProperty Name="CCiFuncion" ColumnName="CCiFuncion" />
+                <ScalarProperty Name="CDsFuncion" ColumnName="CDsFuncion" />
+                <ScalarProperty Name="NNuIdOpcion" ColumnName="NNuIdOpcion" />
+                <ScalarProperty Name="CDsOpcionMenu" ColumnName="CDsOpcionMenu" />
+                <ScalarProperty Name="CDsOpcionPadre" ColumnName="CDsOpcionPadre" />
+                <ScalarProperty Name="NNuNivel" ColumnName="NNuNivel" />
+                <ScalarProperty Name="CDsNivel" ColumnName="CDsNivel" />
+                <ScalarProperty Name="NNuPosicion" ColumnName="NNuPosicion" />
+                <ScalarProperty Name="NNuIdOpcionPadre" ColumnName="NNuIdOpcionPadre" />
+                <ScalarProperty Name="CSNUltimoNivel" ColumnName="CSNUltimoNivel" />
+                <ScalarProperty Name="CSNSeparador" ColumnName="CSNSeparador" />
+                <ScalarProperty Name="CCtClase" ColumnName="CCtClase" />
+                <ScalarProperty Name="CDsArchivo" ColumnName="CDsArchivo" />
+                <ScalarProperty Name="CDsController" ColumnName="CDsController" />
+                <ScalarProperty Name="CDsEventoController" ColumnName="CDsEventoController" />
+                <ScalarProperty Name="CDsImagen" ColumnName="CDsImagen" />
+                <ScalarProperty Name="CDsArgumento" ColumnName="CDsArgumento" />
+                <ScalarProperty Name="cciAplicacionOrigen" ColumnName="cciAplicacionOrigen" />
+                <ScalarProperty Name="CSNOcultaOpcion" ColumnName="CSNOcultaOpcion" />
+                <ScalarProperty Name="CSNGrupo" ColumnName="CSNGrupo" />
+                <ScalarProperty Name="CDsAbreviaturaMenu" ColumnName="CDsAbreviaturaMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZPLA_VIEW_GENITX_AREA_DPTO">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.ZPLA_VIEW_GENITX_AREA_DPTO">
+              <MappingFragment StoreEntitySet="ZPLA_VIEW_GENITX_AREA_DPTO">
+                <ScalarProperty Name="empcod" ColumnName="empcod" />
+                <ScalarProperty Name="GprCod" ColumnName="GprCod" />
+                <ScalarProperty Name="GprCtaCod" ColumnName="GprCtaCod" />
+                <ScalarProperty Name="GprDsc" ColumnName="GprDsc" />
+                <ScalarProperty Name="GprEstado" ColumnName="GprEstado" />
+                <ScalarProperty Name="GprCorreos" ColumnName="GprCorreos" />
+                <ScalarProperty Name="DgprCod" ColumnName="DgprCod" />
+                <ScalarProperty Name="DgprCtaCod" ColumnName="DgprCtaCod" />
+                <ScalarProperty Name="DgprDsc" ColumnName="DgprDsc" />
+                <ScalarProperty Name="GctaCod" ColumnName="GctaCod" />
+                <ScalarProperty Name="SgrpCtaCod" ColumnName="SgrpCtaCod" />
+                <ScalarProperty Name="DgprCorreo" ColumnName="DgprCorreo" />
+                <ScalarProperty Name="DgprCC" ColumnName="DgprCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZPLA_VIEW_USUARIOS">
+            <EntityTypeMapping TypeName="PrometeoAdminModel.ZPLA_VIEW_USUARIOS">
+              <MappingFragment StoreEntitySet="ZPLA_VIEW_USUARIOS">
+                <ScalarProperty Name="CCiUsuario" ColumnName="CCiUsuario" />
+                <ScalarProperty Name="CCiDocumento" ColumnName="CCiDocumento" />
+                <ScalarProperty Name="CDsNombre" ColumnName="CDsNombre" />
+                <ScalarProperty Name="CDsApellido" ColumnName="CDsApellido" />
+                <ScalarProperty Name="CSNPerfil" ColumnName="CSNPerfil" />
+                <ScalarProperty Name="CSNAccesoAdm" ColumnName="CSNAccesoAdm" />
+                <ScalarProperty Name="CCiDepartamento" ColumnName="CCiDepartamento" />
+                <ScalarProperty Name="CDsDepartamento" ColumnName="CDsDepartamento" />
+                <ScalarProperty Name="CCiCargo" ColumnName="CCiCargo" />
+                <ScalarProperty Name="CDsCargo" ColumnName="CDsCargo" />
+                <ScalarProperty Name="CTxClave" ColumnName="CTxClave" />
+                <ScalarProperty Name="CTxEmail" ColumnName="CTxEmail" />
+                <ScalarProperty Name="CCeUsuario" ColumnName="CCeUsuario" />
+                <ScalarProperty Name="CCtUsuario" ColumnName="CCtUsuario" />
+                <ScalarProperty Name="CCiDominio" ColumnName="CCiDominio" />
+                <ScalarProperty Name="CCiUsuarioDominio" ColumnName="CCiUsuarioDominio" />
+                <ScalarProperty Name="CCiRol" ColumnName="CCiRol" />
+                <ScalarProperty Name="CSNPideClave" ColumnName="CSNPideClave" />
+                <ScalarProperty Name="CSnUserSAP" ColumnName="CSnUserSAP" />
+                <ScalarProperty Name="CCiUserSAP" ColumnName="CCiUserSAP" />
+                <ScalarProperty Name="CTxClaveSAP" ColumnName="CTxClaveSAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

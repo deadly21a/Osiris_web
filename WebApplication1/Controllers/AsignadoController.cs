@@ -173,28 +173,48 @@ namespace WebApplication1.Controllers
                 {
                     using (OsirisEntities db = new OsirisEntities())
                     {
-                        RequerimientoAsignado nuevoRequerimiento = new RequerimientoAsignado
-                        {
-                            ID_Estado = model.ID_Estado,
-                            ID_ingreso_requerimiento = model.ID_ingreso_requerimiento,
-                            ID_Solicitante = model.ID_Solicitante,
-                            Requerimiento = model.Requerimiento,
-                            F_revision = model.F_revision,
-                            Comentario_rev = model.Comentario_rev,
-                            Duracion_Hr = model.Duracion_Hr,
-                            ID_Ejecutor = model.ID_Ejecutor,
-                            F_inicio = model.F_inicio,
-                            F_fin = model.F_fin,
-                            ID_Publicado = model.ID_Publicado,
-                            Cumplimiento = model.Cumplimiento,
-                            Comentario_asig = model.Comentario_asig
-                        };
+                        string query = @"
+                    INSERT INTO RequerimientoAsignado (ID_Estado, ID_ingreso_requerimiento, ID_Solicitante, Requerimiento, F_revision, Comentario_rev, Duracion_Hr, ID_Ejecutor, F_inicio, F_fin, ID_Publicado, Cumplimiento, Comentario_Asig)
+                    VALUES(@ID_Estado, @ID_ingreso_requerimiento, @ID_Solicitante, @Requerimiento, @F_revision, @Comentario_rev, @Duracion_Hr, @ID_Ejecutor, @F_inicio, @F_fin, @ID_Publicado, @Cumplimiento, @Comentario_Asig)";
+                        db.Database.ExecuteSqlCommand(query,
+                            new SqlParameter("@ID_Estado", model.ID_Estado),
+                            new SqlParameter("@ID_ingreso_requerimiento", model.ID_ingreso_requerimiento),
+                            new SqlParameter("@ID_Solicitante", model.ID_Solicitante),
+                            new SqlParameter("@Requerimiento", model.Requerimiento),
+                            new SqlParameter("@F_revision", model.F_revision),
+                            new SqlParameter("@Comentario_rev", model.Comentario_rev),
+                            new SqlParameter("@Duracion_Hr", model.Duracion_Hr),
+                            new SqlParameter("@ID_Ejecutor", model.ID_Ejecutor),
+                            new SqlParameter("@F_inicio", model.F_inicio),
+                            new SqlParameter("@F_fin", model.F_fin),
+                            new SqlParameter("@ID_Publicado", model.ID_Publicado),
+                            new SqlParameter("@Cumplimiento", model.Cumplimiento),
+                            new SqlParameter("@Comentario_asig", model.Comentario_asig));
 
-                        db.RequerimientoAsignado.Add(nuevoRequerimiento);
-                        db.SaveChanges();
+                        return Json(new { success = true, message = "Requerimiento Asignado Correctamente" });
                     }
+                    //    RequerimientoAsignado nuevoRequerimiento = new RequerimientoAsignado
+                    //    {
+                    //        ID_Estado = model.ID_Estado,
+                    //        ID_ingreso_requerimiento = model.ID_ingreso_requerimiento,
+                    //        ID_Solicitante = model.ID_Solicitante,
+                    //        Requerimiento = model.Requerimiento,
+                    //        F_revision = model.F_revision,
+                    //        Comentario_rev = model.Comentario_rev,
+                    //        Duracion_Hr = model.Duracion_Hr,
+                    //        ID_Ejecutor = model.ID_Ejecutor,
+                    //        F_inicio = model.F_inicio,
+                    //        F_fin = model.F_fin,
+                    //        ID_Publicado = model.ID_Publicado,
+                    //        Cumplimiento = model.Cumplimiento,
+                    //        Comentario_asig = model.Comentario_asig
+                    //    };
 
-                    return Json(new { success = true, message = "Requerimiento asignado exitosamente." });
+                    //    db.RequerimientoAsignado.Add(nuevoRequerimiento);
+                    //    db.SaveChanges();
+                    //}
+
+                    //return Json(new { success = true, message = "Requerimiento asignado exitosamente." });
                 }
                 else
                 {
@@ -210,4 +230,4 @@ namespace WebApplication1.Controllers
 
 
     }
-}
+}   

@@ -8,16 +8,16 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class LoginController : Controller
-    {
-        
-        private PrometeoAdminEntities db = new PrometeoAdminEntities();
-
-        // GET: Login
-        public ActionResult Login()
+        public class LoginController : Controller
         {
-            return View();
-        }
+        
+            private PrometeoAdminEntities db = new PrometeoAdminEntities();
+
+            // GET: Login
+            public ActionResult Login()
+            {
+                return View();
+            }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -31,39 +31,31 @@ namespace WebApplication1.Controllers
                 if (usuario != null)
                 {
                     
-                    var loginViewModel = new LoginViewModel
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
                     {
-                       
-                      
-                        CDsNombre = usuario.CDsNombre,
-                        CDsApellido = usuario.CDsApellido
-                        
-                    };
 
-                    
-                    return RedirectToAction("Index", "Home", loginViewModel);
+                        ViewBag.Mensaje = "Usuario y/o contraseña incorrectos";
+                        return View();
+                    }
                 }
-                else
-                {
-                    
-                    ModelState.AddModelError("", "Usuario o contraseña incorrectos");
-                    return View(model);
-                }
+
+                return View(model);
             }
-
-            
-            return View(model);
+        public ActionResult Logout()
+        {
+           
+            return RedirectToAction("Login", "Login");
         }
 
-
-        
         protected override void Dispose(bool disposing)
-        {
-            if (disposing)
             {
-                db.Dispose();
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
         }
     }
-}

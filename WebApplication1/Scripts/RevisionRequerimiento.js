@@ -1,5 +1,8 @@
 ﻿
-    var table = $('#myTable').DataTable({
+var table;
+
+
+    table = $('#myTable').DataTable({
         "autoWidth": true,
         "scrollY": true,
         "scrollX": true,
@@ -9,35 +12,31 @@
         orderable: false,
     });
 
-
-ConsultaDatos();
+    ConsultaDatos();
 
 
 function ConsultaDatos() {
-
     $.ajax({
         type: "GET",
         url: '/Revision/Json',
     }).done(function (result) {
         var dataTable = result.ListaRequerimiento;
 
-        if (dataTable != 0)
-            CargaDatosTabla(dataTable) 
-
-
-
+        if (dataTable.length > 0) {
+            CargaDatosTabla(dataTable);
+        }
     }).fail(function (result) {
         alert('Error en la solicitud: ' + result);
     });
-
 }
 
 
 function CargaDatosTabla(dataTable) {
 
-    $('#myTable').DataTable().destroy();
+    table.clear().draw();
+    table.rows.add(dataTable).draw();
 
-    $(document).ready(function () {
+ 
         $("#myTable").DataTable({
             "autoWidth": true,
             "scrollY": true,
@@ -119,8 +118,6 @@ function CargaDatosTabla(dataTable) {
                 }
             ]
         });
-    });
-   
 }
 
 

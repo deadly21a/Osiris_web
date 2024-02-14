@@ -46,43 +46,9 @@ $(document).ready(function () {
     });
 });
 
-//$('#ID_Aplicacion').select2({
-//    width: '100%', allowClear: true,
-//    placeholder: 'Buscar Aplicacion',
-//    ajax: {
-//        url: '/Requerimiento/ObtenerDatosAplicacion',
-//        data: function (params) {
-
-//            var id_Aplicacion = params.term;
-
-//            var query = {
-//                ID_Aplicacion: id_Aplicacion == null ? 0 : id_Aplicacion,
-                
-//            }
-
-//            return query;
-//        },
-//        processResults: function (data) {
-//            // Transforms the top-level key of the response object from 'items' to 'results'
-//            return {
-//                results: data.items
-//            };
-//        }
-
-//    }
-//});
-
-//$('#ID_Aplicacion').on('select2:select', function (e) {
-//    var IdAplicacion = e.params.data.id;
-//    $('#ID_Aplicacion').val(IdAplicacion)
-//});
-//$('#ID_Aplicacion').on('select2:unselect', function (e) {
-//    $('#IdAplicacion').val(0)
-//});
 
 
 IdEstado
-
 $('#ID_Estado').select2({
     width: '100%', allowClear: true,
     placeholder: 'Buscar Estado',
@@ -266,7 +232,7 @@ IdProyecto
 
 $('#ID_Proyecto').select2({
     width: '100%', allowClear: true,
-    placeholder: 'Buscar Prioridad',
+    placeholder: 'Buscar Proyecto',
     ajax: {
         url: '/Requerimiento/ObtenerDatosProyecto',
         data: function (params) {
@@ -281,7 +247,6 @@ $('#ID_Proyecto').select2({
             return query;
         },
         processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
             return {
                 results: data.items
             };

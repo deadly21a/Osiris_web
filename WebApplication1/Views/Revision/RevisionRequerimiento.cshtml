@@ -36,19 +36,23 @@
                         </div>
                         <div class="form-group">
                             <label for="ID_Estado">Estado</label>
-                            <input type="text" id="ID_Estado" class="form-control" disabled>
+                            <input type="text" id="ID_Estado" class="form-control" disabled hidden>
+                            <input type="text" id="Estado" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="ID_Solicitante">Solicitante</label>
-                            <input type="text" id="ID_Solicitante" class="form-control" disabled>
+                            <input type="text" id="ID_Solicitante" class="form-control" disabled hidden>
+                            <input type="text" id="Solicitante" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="ID_Tipo_requerimiento">Tipo de Requerimiento</label>
-                            <input type="text" id="ID_Tipo_requerimiento" class="form-control" disabled>
+                            <input type="text" id="ID_Tipo_requerimiento" class="form-control" disabled hidden>
+                            <input type="text" id="TipoRequerimiento" class="form-control" disabled >
                         </div>
                         <div class="form-group">
                             <label for="ID_Prioridad">Prioridad</label>
-                            <input type="text" id="ID_Prioridad" class="form-control" disabled>
+                            <input type="text" id="ID_Prioridad" class="form-control" disabled hidden>
+                            <input type="text" id="Prioridad" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="Requerimiento">Requerimiento</label>
@@ -56,11 +60,13 @@
                         </div>
                         <div class="form-group">
                             <label for="ID_Proyecto">Proyecto</label>
-                            <input type="text" id="ID_Proyecto" class="form-control" disabled>
+                            <input type="text" id="ID_Proyecto" class="form-control" disabled hidden>
+                            <input type="text" id="Proyecto" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="ID_Aplicacion">Aplicación</label>
-                            <input type="text" id="ID_Aplicacion" class="form-control" disabled>
+                            <input type="text" id="ID_Aplicacion" class="form-control" disabled hidden>
+                            <input type="text" id="Aplicacion" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="Opcion">Opción</label>
@@ -68,7 +74,8 @@
                         </div>
                         <div class="form-group">
                             <label for="ID_Hardware">Hardware</label>
-                            <input type="text" id="ID_Hardware" class="form-control" disabled>
+                            <input type="text" id="ID_Hardware" class="form-control" disabled hidden>
+                            <input type="text" id="Hardware" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label for="Comentario">Comentario</label>
@@ -119,7 +126,7 @@
             <div class="col-12">
                 @*<a href="#" class="btn btn-secondary">Cancel</a>*@
                 <button type="submit" id="BtnCancelar" class="btn btn-secondary">Cancel</button>
-                <button type="submit" id="BtnEnviarDatos" class="btn btn-success float-right">Subir Requerimiento</button>
+                <button type="submit" id="BtnEnviarDatos" class="btn btn-success float-right">Subir Revision</button>
             </div>
         </div>
     </section>

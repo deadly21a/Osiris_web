@@ -11,8 +11,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID_ingreso_requerimiento)
+            ID Requerimiento
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
@@ -44,12 +45,12 @@
             @Html.DisplayNameFor(model => model.Comentario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_ingreso)
+            Fecha Ingreso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.F_Plazo)
+            Fecha Plazo
         </th>
-        <th></th>
+        <th> </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -95,8 +96,8 @@
         </td>
         <td>
 
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID_ingreso_requerimiento }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Details", "Details", new { id = item.ID_ingreso_requerimiento}, new { @class = "btn btn-info" })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID_ingreso_requerimiento }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id = item.ID_ingreso_requerimiento}, new { @class = "btn btn-info" })*@
             @Html.ActionLink("Delete", "Delete", new { id = item.ID_ingreso_requerimiento }, new { @class = "btn btn-danger" })
         </td>
     </tr>

@@ -28,19 +28,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 dataType: "json",
                 success: function (response) {
 
-                    let fechaIngresoFormateada = moment(response.datos.fecha_ingreso).format('YYYY-MM-DD HH:mm');
+                        let fechaIngresoFormateada = moment(response.datos.fecha_ingreso).format('YYYY-MM-DD HH:mm');
                     let fechaPlazoFormateada = moment(response.datos.F_Plazo).format('YYYY-MM-DD HH:mm');
 
                     $('#ID_ingreso_requerimiento').val(response.datos.ID_ingreso_requerimiento);
                     $('#ID_Estado').val(response.datos.ID_Estado);
+                    $('#Estado').val(response.datos.Estado);
                     $('#ID_Solicitante').val(response.datos.ID_Solicitante);
+                    $('#Solicitante').val(response.datos.Solicitante);
                     $('#ID_Tipo_requerimiento').val(response.datos.ID_Tipo_requerimiento);
+                    $('#TipoRequerimiento').val(response.datos.TipoRequerimiento);
+                    $('#Prioridad').val(response.datos.Prioridad);
                     $('#ID_Prioridad').val(response.datos.ID_Prioridad);
+
                     $('#Requerimiento').val(response.datos.Requerimiento);
                     $('#ID_Proyecto').val(response.datos.ID_Proyecto);
+                    $('#Proyecto').val(response.datos.Proyecto);
                     $('#ID_Aplicacion').val(response.datos.ID_Aplicacion);
+                    $('#Aplicacion').val(response.datos.Aplicacion);
                     $('#Opcion').val(response.datos.Opcion);
                     $('#ID_Hardware').val(response.datos.ID_Hardware);
+                    $('#Hardware').val(response.datos.Hardware);
                     $('#Comentario').val(response.datos.Comentario);
                     $('#fecha_ingreso').val(fechaIngresoFormateada);
                     $('#F_Plazo').val(fechaPlazoFormateada);

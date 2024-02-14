@@ -17,6 +17,48 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public JsonResult ObtenerDatosEstado(int id_Estado)
+        {
+            try
+            {
+
+                using (OsirisEntities osirisEntities = new OsirisEntities())
+                {
+                    if (id_Estado != 0)
+                    {
+                        var detEstado = (from deta in osirisEntities.Estado
+                                         where deta.ID_Estado == id_Estado
+                                         select new
+                                         {
+                                             id = deta.ID_Estado,
+                                             text = deta.TipoEstado
+                                         }).ToList();
+                        return Json(new { success = true, items = detEstado }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        var detEstado = (from deta in osirisEntities.Estado
+
+                                         select new
+                                         {
+                                             id = deta.ID_Estado,
+                                             text = deta.TipoEstado
+                                         }).ToList();
+                        return Json(new { success = true, items = detEstado }, JsonRequestBehavior.AllowGet);
+                    }
+
+
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
         public JsonResult ObtenerDatosEjecutor(string term)
         {
@@ -45,50 +87,6 @@ namespace WebApplication1.Controllers
 
 
 
-
-
-                //public JsonResult ObtenerDatosEjecutor(int id_Ejecutor)
-                //{
-                //    try
-                //    {
-
-                //        using (OsirisEntities osirisEntities = new OsirisEntities())
-                //        {
-                //            if (id_Ejecutor != 0)
-                //            {
-                //                var detEjecutor = (from deta in osirisEntities.Ejecutor
-                //                                   where deta.ID_Ejecutor == id_Ejecutor
-                //                                   select new
-                //                                   {
-                //                                       id = deta.ID_Ejecutor,
-                //                                       text = deta.TipoEjecutor
-                //                                   }).ToList();
-                //                return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
-                //            }
-                //            else
-                //            {
-                //                var detEjecutor = (from deta in osirisEntities.Ejecutor
-
-                //                                   select new
-                //                                   {
-                //                                       id = deta.ID_Ejecutor,
-                //                                       text = deta.TipoEjecutor
-                //                                   }).ToList();
-                //                return Json(new { success = true, items = detEjecutor }, JsonRequestBehavior.AllowGet);
-                //            }
-
-
-
-
-                //        }
-
-
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
-                //    }
-                //}
 
 
 
@@ -135,32 +133,105 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpPost]
         public JsonResult ConsultaRequerimiento(string ID_ingreso_requerimiento)
         {
-            try
+
+            VistaRevisionRequerimiento model = new VistaRevisionRequerimiento();
+            int IdRequerimiento = Int32.Parse(ID_ingreso_requerimiento.ToString());
+            using (OsirisEntities db = new OsirisEntities())
             {
-                int IdRequerimiento = Int32.Parse(ID_ingreso_requerimiento);
-                using (OsirisEntities db = new OsirisEntities())
+                try
                 {
-                    string updateQuery = "UPDATE ingreso_requerimiento SET ID_Estado = ID_Estado WHERE ID_ingreso_requerimiento = @IdRequerimiento";
-                    db.Database.ExecuteSqlCommand(updateQuery, new SqlParameter("@IdRequerimiento", IdRequerimiento));
+                    using (var dbContextTransaction = db.Database.BeginTransaction())
+                    {
 
-                    var model = db.RevisionRequerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
 
+                        var datos = db.ingreso_requerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
+
+                        if (datos != null)
+                        {
+
+                            //model.ID_ingreso_requerimiento = datos.ID_ingreso_requerimiento;
+                            //model.ID_Estado = (int)datos.ID_Estado;
+                            //model.ID_Solicitante = (int)datos.ID_Solicitante;
+                            //model.ID_Tipo_requerimiento = (int)datos.ID_Tipo_requerimiento;
+                            //model.ID_Prioridad = (int)datos.ID_Prioridad;
+                            //model.Requerimiento = datos.Requerimiento;
+                            //model.ID_Proyecto = (int)datos.ID_Proyecto;
+                            //model.ID_Aplicacion = (int)datos.ID_Aplicacion;
+                            //model.Opcion = datos.Opcion;
+                            //model.ID_Hardware = (int)datos.ID_Hardware;
+                            //model.Comentario = datos.Comentario;
+                            //model.fecha_ingreso = (DateTime)datos.fecha_ingreso;
+                            //model.F_Plazo = (DateTime)datos.F_Plazo;
+                            //model.ID_Estado = 2;
+                            datos.ID_Estado = 3;
+                            // Cambiar el estado a "Revisado"
+                            // datos.ID_Estado = ObtenerIdEstadoRevisado(db);
+                            //db.ingreso_requerimiento.Attach(datos);
+                            db.Entry(datos).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+
+
+                            dbContextTransaction.Commit();
+                            dbContextTransaction.Dispose();
+
+                            // Confirmar la transacción
+
+                            // return View("RevisionRequerimiento", model);
+                            //return Json(new { success = false, message = "No se encontraron datos para el ID proporcionado", errorDetails = "" });
+                        }
+
+
+                    }
+
+                    model = db.VistaRevisionRequerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
+                    db.Dispose();
                     return Json(new { datos = model }, JsonRequestBehavior.AllowGet);
+
+                    // return Json(new { success = false, message = "No se encontraron datos para el ID proporcionado", errorDetails = ""});
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "No se encontraron datos para el ID proporcionado",
+                        errorDetails = ex.Message
+                    });
                 }
             }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    success = false,
-                    message = "No se encontraron datos para el ID proporcionado",
-                    errorDetails = ex.Message
-                });
-            }
+
+
         }
+
+
+        //[HttpPost]
+        //public JsonResult ConsultaRequerimiento(string ID_ingreso_requerimiento)
+        //{
+        //    try
+        //    {
+        //        int IdRequerimiento = Int32.Parse(ID_ingreso_requerimiento);
+        //        using (OsirisEntities db = new OsirisEntities())
+        //        {
+        //            string updateQuery = "UPDATE VistaIngresoRequerimiento SET ID_Estado = ID_Estado WHERE ID_ingreso_requerimiento = @IdRequerimiento";
+        //            db.Database.ExecuteSqlCommand(updateQuery, new SqlParameter("@IdRequerimiento", IdRequerimiento));
+
+        //            var model = db.VistaRevisionRequerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
+
+        //            return Json(new { datos = model }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new
+        //        {
+        //            success = false,
+        //            message = "No se encontraron datos para el ID proporcionado",
+        //            errorDetails = ex.Message
+        //        });
+        //    }
+        //}
 
 
 
@@ -193,28 +264,7 @@ namespace WebApplication1.Controllers
 
                         return Json(new { success = true, message = "Requerimiento Asignado Correctamente" });
                     }
-                    //    RequerimientoAsignado nuevoRequerimiento = new RequerimientoAsignado
-                    //    {
-                    //        ID_Estado = model.ID_Estado,
-                    //        ID_ingreso_requerimiento = model.ID_ingreso_requerimiento,
-                    //        ID_Solicitante = model.ID_Solicitante,
-                    //        Requerimiento = model.Requerimiento,
-                    //        F_revision = model.F_revision,
-                    //        Comentario_rev = model.Comentario_rev,
-                    //        Duracion_Hr = model.Duracion_Hr,
-                    //        ID_Ejecutor = model.ID_Ejecutor,
-                    //        F_inicio = model.F_inicio,
-                    //        F_fin = model.F_fin,
-                    //        ID_Publicado = model.ID_Publicado,
-                    //        Cumplimiento = model.Cumplimiento,
-                    //        Comentario_asig = model.Comentario_asig
-                    //    };
-
-                    //    db.RequerimientoAsignado.Add(nuevoRequerimiento);
-                    //    db.SaveChanges();
-                    //}
-
-                    //return Json(new { success = true, message = "Requerimiento asignado exitosamente." });
+                    
                 }
                 else
                 {

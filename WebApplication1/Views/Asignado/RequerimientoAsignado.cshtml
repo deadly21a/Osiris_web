@@ -37,11 +37,18 @@
                         </div>
                         <div class="form-group">
                             <label for="ID_Estado">Estado</label>
-                            <input type="text" id="ID_Estado" class="form-control">
+                            <select id="ID_Estado" class="form-control custom-select">
+                            </select>
+                            <input type="text" id="IdEstado" class="form-control" hidden>
+                            <input type="text" id="ID_Estado" class="form-control" hidden>
+                            <input type="text" id="Estado" class="form-control" disabled>
+
                         </div>
                         <div class="form-group">
                             <label for="ID_Solicitante">Solicitante</label>
-                            <input type="text" id="ID_Solicitante" class="form-control" disabled>
+                            <input type="text" id="ID_Solicitante" class="form-control" disabled hidden>
+                            <input type="text" id="Solicitante" class="form-control" disabled>
+                            
                         </div>
                         <div class="form-group">
                             <label for="ID_Ejecutor">Ejecutor</label>

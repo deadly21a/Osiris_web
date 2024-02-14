@@ -32,5 +32,13 @@ namespace WebApplication1.DataAccess
         public Nullable<System.DateTime> F_revision { get; set; }
         public string Comentario_rev { get; set; }
         public Nullable<decimal> Duracion_Hr { get; set; }
+        public Nullable<int> ID_Estado { get; set; }
+        public Nullable<int> ID_Solicitante { get; set; }
+        public Nullable<int> ID_Tipo_requerimiento { get; set; }
+        public Nullable<int> ID_Prioridad { get; set; }
+        public Nullable<int> ID_Proyecto { get; set; }
+        public Nullable<int> ID_Aplicacion { get; set; }
+        public Nullable<int> ID_Hardware { get; set; }
+        public Nullable<int> ID_Usuario { get; set; }
     }
 }

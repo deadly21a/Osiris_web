@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="OsirisModel.Publicado" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.RevisionRequerimiento" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.UsuarioRevision" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OsirisModel.Edit_view" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.VistaIngresoRequerimiento" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.VistaRequerimientoAsignado" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OsirisModel.VistaRevisionRequerimiento" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />

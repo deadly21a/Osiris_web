@@ -34,12 +34,12 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ingreso_requerimiento ingreso_requerimiento = db.ingreso_requerimiento.Find(id);
-            if (ingreso_requerimiento == null)
+            ingreso_requerimiento VistaIngresoRequerimiento = db.ingreso_requerimiento.Find(id);
+            if (VistaIngresoRequerimiento == null)
             {
                 return HttpNotFound();
             }
-            return View(ingreso_requerimiento);
+            return View(VistaIngresoRequerimiento);
         }
 
         // GET: ingreso_requerimiento/Create
@@ -72,12 +72,12 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ingreso_requerimiento ingreso_requerimiento = db.ingreso_requerimiento.Find(id);
-            if (ingreso_requerimiento == null)
+            ingreso_requerimiento VistaIngresoRequerimiento = db.ingreso_requerimiento.Find(id);
+            if (VistaIngresoRequerimiento == null)
             {
                 return HttpNotFound();
             }
-            return View(ingreso_requerimiento);
+            return View(VistaIngresoRequerimiento);
         }
 
         // POST: ingreso_requerimiento/Edit/5
@@ -158,48 +158,6 @@ namespace WebApplication1.Controllers
 
 
 
-        //public JsonResult ObtenerDatosAplicacion(int id_Aplicacion)
-        //{
-        //    try
-        //    {
-
-        //        using (OsirisEntities osirisEntities = new OsirisEntities())
-        //        {
-        //            if(id_Aplicacion != 0)
-        //            {
-        //                var detAplicacion = (from deta in osirisEntities.Aplicacion
-        //                                    where deta.ID_Aplicacion == id_Aplicacion
-        //                                    select new
-        //                                    {
-        //                                        id = deta.ID_Aplicacion,
-        //                                        text = deta.TipoAplicacion
-        //                                    }).ToList();
-        //                return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                var detAplicacion = (from deta in osirisEntities.Aplicacion
-
-        //                                    select new
-        //                                    {
-        //                                        id = deta.ID_Aplicacion,
-        //                                        text = deta.TipoAplicacion
-        //                                    }).ToList();
-        //                return Json(new { success = true, items = detAplicacion }, JsonRequestBehavior.AllowGet);
-        //            }
-
-
-
-
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
 
         public JsonResult ObtenerDatosSolicitante(string term)
         {
@@ -422,48 +380,7 @@ namespace WebApplication1.Controllers
             }
         }
 
-        //public JsonResult ObtenerDatosHardware(int id_Hardware)
-        //{
-        //    try
-        //    {
-
-        //        using (OsirisEntities osirisEntities = new OsirisEntities())
-        //        {
-        //            if (id_Hardware != 0)
-        //            {
-        //                var detHardware = (from deta in osirisEntities.Hardware
-        //                                   where deta.ID_Hardware == id_Hardware
-        //                                   select new
-        //                                   {
-        //                                       id = deta.ID_Hardware,
-        //                                       text = deta.TipoHardware
-        //                                   }).ToList();
-        //                return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                var detHardware = (from deta in osirisEntities.Hardware
-
-        //                                   select new
-        //                                   {
-        //                                       id = deta.ID_Hardware,
-        //                                       text = deta.TipoHardware
-        //                                   }).ToList();
-        //                return Json(new { success = true, items = detHardware }, JsonRequestBehavior.AllowGet);
-        //            }
-
-
-
-
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+       
 
         [HttpPost]
         public JsonResult BtnEnviarDatos(IngresoRequerimientoViewModel model)

@@ -6,8 +6,9 @@
     <title>Osiris</title>
     <link rel="icon" href="~/img/osirisl.jpg" type="image/x-icon">
     <!-- jQuery -->
-    @*<script src="/Content/plugins/jquery/jquery.min.js"></script>*@
-    <script src="~/Content/plugins/jquery/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <!-- jQuery UI 1.11.4 -->
     <script src="/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -41,7 +42,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="/Content/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-    <link href="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-1.13.8/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/date-1.5.1/fc-4.3.0/fh-3.4.0/kt-2.11.0/r-2.5.0/rg-1.4.1/rr-1.4.1/sc-2.3.0/sb-1.6.0/sp-2.2.0/sl-1.7.0/sr-1.3.0/datatables.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- MomentJS -->
@@ -158,8 +160,6 @@
                 </nav>
             </div>
         </aside>
-
-
         <div class="content-wrapper">
             @RenderBody()
             <hr />
@@ -169,6 +169,7 @@
         </div>
     </div>
     @RenderSection("Scripts", required: false)
+    <script src="/Content/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Select2 -->
@@ -177,10 +178,12 @@
     <script src="/Content/plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
     <script src="/Content/plugins/sparklines/sparkline.js"></script>
+    <script src="/Content/plugins/moment/moment.min.js"></script>
+    <script src="/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
-    @*<script src="/Content/plugins/moment/moment.min.js"></script>*@
+
     <script src="/Content/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
@@ -190,11 +193,17 @@
     <script src="/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/Content/dist/js/adminlte.js"></script>
+    <script src="dist/js/pages/dashboard.js"></script>
 
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-1.13.8/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/date-1.5.1/fc-4.3.0/fh-3.4.0/kt-2.11.0/r-2.5.0/rg-1.4.1/rr-1.4.1/sc-2.3.0/sb-1.6.0/sp-2.2.0/sl-1.7.0/sr-1.3.0/datatables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/jszip.min.js"></script>
 </body>
 </html>
 

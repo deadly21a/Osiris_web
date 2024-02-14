@@ -15,9 +15,9 @@ namespace WebApplication1.Models
         public int Prioridad { get; set; }
         public string Requerimiento { get; set; }
         public int Proyecto { get; set; }
-        public int Aplicacion { get; set; }
-        public string Opcion { get; set; }
-        public int Hardware { get; set; }
+        public int? Aplicacion { get; set; }
+        public string Opcion { get; set; } = "";
+        public int? Hardware { get; set; }
         public string Comentario { get; set; }
         public DateTime F_Plazo { get; set; }
         public DateTime F_revision { get; set; }
@@ -25,4 +25,4 @@ namespace WebApplication1.Models
         public decimal Duracion_Hr { get; set; }
         public int UsuarioRevision { get; set; }
     }
-}
+}   

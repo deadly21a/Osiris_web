@@ -27,5 +27,12 @@ namespace WebApplication1.DataAccess
         public string Comentario { get; set; }
         public Nullable<System.DateTime> fecha_ingreso { get; set; }
         public Nullable<System.DateTime> F_Plazo { get; set; }
+        public Nullable<int> ID_Estado { get; set; }
+        public Nullable<int> ID_Solicitante { get; set; }
+        public Nullable<int> ID_Tipo_requerimiento { get; set; }
+        public Nullable<int> ID_Prioridad { get; set; }
+        public Nullable<int> ID_Proyecto { get; set; }
+        public Nullable<int> ID_Aplicacion { get; set; }
+        public Nullable<int> ID_Hardware { get; set; }
     }
 }

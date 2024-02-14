@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using WebApplication1.DataAccess;
 using WebApplication1.Models;
 
+
 namespace WebApplication1.Controllers
 {
     public class RevisionController : Controller
@@ -280,62 +281,10 @@ namespace WebApplication1.Controllers
 
 
 
-
-
-
-
-
-
-
-        //public JsonResult ObtenerDatosUsuario(int id_Usuario)
-        //{
-        //    try
-        //    {
-
-        //        using (OsirisEntities osirisEntities = new OsirisEntities())
-        //        {
-        //            if (id_Usuario != 0)
-        //            {
-        //                var detUusuario = (from deta in osirisEntities.UsuarioRevision
-        //                                   where deta.ID_Usuario == id_Usuario
-        //                                   select new
-        //                                   {
-        //                                       id = deta.ID_Usuario,
-        //                                       text = deta.TipoUsuario
-        //                                   }).ToList();
-        //                return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                var detUusuario = (from deta in osirisEntities.UsuarioRevision
-
-        //                                   select new
-        //                                   {
-        //                                       id = deta.ID_Usuario,
-        //                                       text = deta.TipoUsuario
-        //                                   }).ToList();
-        //                return Json(new { success = true, items = detUusuario }, JsonRequestBehavior.AllowGet);
-        //            }
-
-
-
-
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = $"Error: {ex.Message}" }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
-
-
-
         public JsonResult ConsultaRequerimiento(string ID_ingreso_requerimiento)
         {
 
-            ingreso_requerimiento model = new ingreso_requerimiento();
+            VistaIngresoRequerimiento model = new VistaIngresoRequerimiento();
             int IdRequerimiento = Int32.Parse(ID_ingreso_requerimiento.ToString());
             using (OsirisEntities db = new OsirisEntities())
             {
@@ -384,7 +333,7 @@ namespace WebApplication1.Controllers
 
                     }
 
-                    model = db.ingreso_requerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
+                    model = db.VistaIngresoRequerimiento.FirstOrDefault(r => r.ID_ingreso_requerimiento == IdRequerimiento);
                     db.Dispose();
                     return Json(new { datos = model }, JsonRequestBehavior.AllowGet);
 
@@ -410,6 +359,26 @@ namespace WebApplication1.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(model.Opcion)) { model.Opcion = string.Empty; }
+
+                if (model.ID_Hardware == null)
+                {
+                    model.ID_Hardware = 0;
+                }
+
+
+                if (model.ID_Proyecto == null)
+                {
+                    model.ID_Proyecto = 0;
+                }
+
+                if (model.ID_Aplicacion == null)
+                {
+                    model.ID_Aplicacion = 0;
+                }
+
+
+
                 if (ModelState.IsValid)
                 {
                     using (OsirisEntities db = new OsirisEntities())

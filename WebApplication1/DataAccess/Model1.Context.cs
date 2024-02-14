@@ -41,7 +41,6 @@ namespace WebApplication1.DataAccess
         public virtual DbSet<Publicado> Publicado { get; set; }
         public virtual DbSet<RevisionRequerimiento> RevisionRequerimiento { get; set; }
         public virtual DbSet<UsuarioRevision> UsuarioRevision { get; set; }
-        public virtual DbSet<Edit_view> Edit_view { get; set; }
         public virtual DbSet<VistaIngresoRequerimiento> VistaIngresoRequerimiento { get; set; }
         public virtual DbSet<VistaRequerimientoAsignado> VistaRequerimientoAsignado { get; set; }
         public virtual DbSet<VistaRevisionRequerimiento> VistaRevisionRequerimiento { get; set; }

@@ -28,5 +28,9 @@ namespace WebApplication1.DataAccess
         public Nullable<System.DateTime> F_fin { get; set; }
         public string Publicado { get; set; }
         public string Estado { get; set; }
+        public Nullable<int> ID_Solicitante { get; set; }
+        public Nullable<int> ID_Ejecutor { get; set; }
+        public Nullable<int> ID_Publicado { get; set; }
+        public Nullable<int> ID_Estado { get; set; }
     }
 }

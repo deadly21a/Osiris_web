@@ -16,11 +16,13 @@ $("#btnBuscar").on("click", function () {
 
             $('#ID_ingreso_requerimiento').val(response.datos.ID_ingreso_requerimiento);
             $('#ID_Solicitante').val(response.datos.ID_Solicitante);
+            $('#Solicitante').val(response.datos.Solicitante);
             $('#Requerimiento').val(response.datos.Requerimiento);
             $('#Duracion_Hr').val(response.datos.Duracion_Hr);
             $('#Comentario_rev').val(response.datos.Comentario_rev);
             $('#F_revision').val(fechaRevisionFormateada);
             $('#ID_Estado').val(response.datos.ID_Estado);
+            $('#Estado').val(response.datos.Estado);
 
         },
 
@@ -62,42 +64,40 @@ $(document).ready(function () {
     });
 });
 
+IdEstado
+$('#ID_Estado').select2({
+    width: '100%', allowClear: true,
+    placeholder: 'Buscar Estado',
+    ajax: {
+        url: '/Requerimiento/ObtenerDatosEstado',
+        data: function (params) {
 
+            var id_Estado = params.term;
 
+            var query = {
+                ID_Estado: id_Estado == null ? 0 : id_Estado,
 
-//$('#ID_Ejecutor').select2({
-//    width: '100%', allowClear: true,
-//    placeholder: 'Buscar Ejecutor',
-//    ajax: {
-//        url: '/Asignado/ObtenerDatosEjecutor',
-//        data: function (params) {
+            }
 
-//            var id_Ejecutor = params.term;
+            return query;
+        },
+        processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+            return {
+                results: data.items
+            };
+        }
 
-//            var query = {
-//                ID_Ejecutor: id_Ejecutor == null ? 0 : id_Ejecutor,
+    }
+});
 
-//            }
-
-//            return query;
-//        },
-//        processResults: function (data) {
-//            // Transforms the top-level key of the response object from 'items' to 'results'
-//            return {
-//                results: data.items
-//            };
-//        }
-
-//    }
-//});
-
-//$('#ID_Ejecutor').on('select2:select', function (e) {
-//    var IdEjecutor = e.params.data.id;
-//    $('#ID_Ejecutor').val(IdEjecutor)
-//});
-//$('#ID_Ejecutor').on('select2:unselect', function (e) {
-//    $('#IdEjecutor').val(0)
-//});
+$('#ID_Estado').on('select2:select', function (e) {
+    var IdEstado = e.params.data.id;
+    $('#ID_Estado').val(IdEstado)
+});
+$('#ID_Estado').on('select2:unselect', function (e) {
+    $('#IdEstado').val(0)
+});
 
 
 

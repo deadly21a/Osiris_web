@@ -19,7 +19,7 @@ namespace WebApplication1.Models
         public int ID_Ejecutor { get; set; }
         public DateTime F_inicio { get; set; }
         public DateTime F_fin {  get; set; }
-        public int ID_Publicado { get; set; }
+        public int? ID_Publicado { get; set; }
         public  decimal Cumplimiento { get; set; }
         public string Comentario_asig { get; set; }
         public int ID_Estado { get; set; }
